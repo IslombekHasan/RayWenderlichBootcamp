@@ -50,6 +50,9 @@
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="STD-7o-ub1">
                                                         <rect key="frame" x="-2" y="0.0" width="268" height="31"/>
+                                                        <connections>
+                                                            <action selector="redSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Q43-cI-hAx"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="360" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0F-ak-UlM">
                                                         <rect key="frame" x="272" y="0.0" width="0.0" height="30"/>
@@ -75,6 +78,9 @@
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Bg4-F2-PHQ">
                                                         <rect key="frame" x="-2" y="0.0" width="268" height="31"/>
+                                                        <connections>
+                                                            <action selector="greenSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kh8-iX-Jgb"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="360" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmF-Ey-FXS">
                                                         <rect key="frame" x="272" y="0.0" width="0.0" height="30"/>
@@ -100,6 +106,9 @@
                                                 <subviews>
                                                     <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="rEX-gU-AUc">
                                                         <rect key="frame" x="-2" y="0.0" width="268" height="31"/>
+                                                        <connections>
+                                                            <action selector="blueSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QSn-bm-ezY"/>
+                                                        </connections>
                                                     </slider>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="360" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp6-LH-7LU">
                                                         <rect key="frame" x="272" y="0.0" width="0.0" height="30"/>
@@ -143,9 +152,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="blueSlider" destination="rEX-gU-AUc" id="h4e-Q1-jCp"/>
                         <outlet property="blueStackView" destination="Iu2-vR-w0w" id="fAy-Ru-uE8"/>
+                        <outlet property="greenSlider" destination="Bg4-F2-PHQ" id="1Od-k1-Xxl"/>
                         <outlet property="greenStackView" destination="CuL-sC-4dO" id="TW2-Ki-x9n"/>
                         <outlet property="headerStackView" destination="Dgf-44-mgF" id="bHK-hD-GIK"/>
+                        <outlet property="redSlider" destination="STD-7o-ub1" id="Hhh-e2-AwR"/>
                         <outlet property="redStackView" destination="h2u-7v-Nrs" id="JeN-lI-r7N"/>
                     </connections>
                 </viewController>
