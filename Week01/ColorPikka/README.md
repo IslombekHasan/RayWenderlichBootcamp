@@ -30,7 +30,7 @@ Along the way, I and my team got #1 in Estonia's Garage48 hackathon (2018), deve
 * [Facebook](https://facebook.com/islombek.hasanov)
 * [Telegram](https://t.me/Islombek_Khasanov)
 
-or you can come to my house for a cup of tea :tea: @ Qo'shariq daha, Andjion shahar, Andijon, Uzbekistan, but be sure to *[call me](tel://+998979970511)* when you come so that I know you're here.
+or you can come to my house for a cup of tea :tea: @ Qo'shariq daha, Andjion shahar, Andijon, Uzbekistan, but be sure to **[call me](tel://+998979970511)** when you come so that I know you're here.
 
 ### We can talk about:
 * how cute puppies are (golden retrievers!);
