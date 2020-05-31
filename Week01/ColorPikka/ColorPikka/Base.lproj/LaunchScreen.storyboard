@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pikachu-3" translatesAutoresizingMaskIntoConstraints="NO" id="O3y-tS-6q0">
+                                <rect key="frame" x="8" y="102.5" width="304" height="363"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="O3y-tS-6q0" secondAttribute="height" multiplier="200:239" id="N0x-T9-DOU"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ColorPikka" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zv9-gv-gNk">
+                                <rect key="frame" x="56" y="23.5" width="208" height="49"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-BoldItalic" family="Helvetica Neue" pointSize="40"/>
+                                <color key="textColor" red="0.72624760870000005" green="0.4423692226" blue="0.076343767339999993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ColorPikka, 2020 for RWBootcamp" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oTB-Dh-oh3">
+                                <rect key="frame" x="54.5" y="532" width="211" height="16"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Zv9-gv-gNk" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Cy-Ki-zQR"/>
+                            <constraint firstItem="oTB-Dh-oh3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5XH-sy-hKp"/>
+                            <constraint firstAttribute="trailing" secondItem="O3y-tS-6q0" secondAttribute="trailing" constant="8" id="RH7-Yd-Biz"/>
+                            <constraint firstItem="O3y-tS-6q0" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Udd-ca-LAE"/>
+                            <constraint firstItem="O3y-tS-6q0" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="8" id="lDy-y8-03U"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="oTB-Dh-oh3" secondAttribute="bottom" constant="20" id="qEv-l8-mru"/>
+                            <constraint firstItem="O3y-tS-6q0" firstAttribute="top" secondItem="Zv9-gv-gNk" secondAttribute="bottom" constant="30" id="rPm-V7-x9U"/>
+                            <constraint firstItem="O3y-tS-6q0" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="yfD-xq-qAE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="50.724637681159422" y="374.33035714285711"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="pikachu-3" width="600" height="717"/>
+    </resources>
+</document>
