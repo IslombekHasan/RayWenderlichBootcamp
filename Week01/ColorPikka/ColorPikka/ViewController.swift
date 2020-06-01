@@ -42,6 +42,22 @@ class ViewController: UIViewController {
         updateViews(for: size)
     }
 
+    @IBAction func didSetColor(_ sender: Any) {
+
+        let alert = UIAlertController(title: "Set color", message: "Give your color a cute name and see the magic happen! ✨", preferredStyle: .alert)
+        let abracadabra = UIAlertAction(title: "Abracadabra!", style: .default, handler: {
+            action in
+            let colorTitle = alert.textFields![0].text
+            self.headerLabel.text = colorTitle!.isEmpty ? "ColorPikka!" : colorTitle
+            self.changeBackgroundColor(forAll: true)
+        })
+
+        alert.addAction(abracadabra)
+        alert.addTextField(configurationHandler: nil)
+
+        present(alert, animated: true)
+    }
+
     @IBAction func redSliderChanged(_ sender: UISlider) {
         changeBackgroundColor()
     }
@@ -52,10 +68,6 @@ class ViewController: UIViewController {
 
     @IBAction func blueSliderChanged(_ seÁnder: UISlider) {
         changeBackgroundColor()
-    }
-
-    @IBAction func didSetColor(_ sender: Any) {
-        changeBackgroundColor(forAll: true)
     }
 
     func updateViews(for size: CGSize) {
@@ -69,6 +81,7 @@ class ViewController: UIViewController {
 
     func updateViewsForLandscape() {
         headerStackView.axis = .horizontal
+        headerLabel.textAlignment = .left
         redStackView.spacing = 2
         greenStackView.spacing = 2
         blueStackView.spacing = 2
@@ -76,6 +89,7 @@ class ViewController: UIViewController {
 
     func updateViewsForPortrait() {
         headerStackView.axis = .vertical
+        headerLabel.textAlignment = .center
         redStackView.spacing = 8
         greenStackView.spacing = 8
         blueStackView.spacing = 8
