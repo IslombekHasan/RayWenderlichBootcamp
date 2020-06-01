@@ -11,6 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var headerStackView: UIStackView!
+    @IBOutlet weak var slidersContainer: UIView!
     @IBOutlet weak var redStackView: UIStackView!
     @IBOutlet weak var greenStackView: UIStackView!
     @IBOutlet weak var blueStackView: UIStackView!
@@ -19,12 +20,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var greenSlider: UISlider!
     @IBOutlet weak var blueSlider: UISlider!
 
+    @IBOutlet weak var headerLabel: UILabel!
+    @IBOutlet weak var redLabel: UILabel!
+    @IBOutlet weak var greenLabel: UILabel!
+    @IBOutlet weak var blueLabel: UILabel!
+    @IBOutlet weak var currentRedValueLabel: UILabel!
+    @IBOutlet weak var currentGreenValueLabel: UILabel!
+    @IBOutlet weak var currentBlueValueLabel: UILabel!
+
     var allLabels: [UILabel] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        slidersContainer.layer.cornerRadius = 8
         updateViews(for: UIScreen.main.bounds.size)
-        getAllLabels()
+        setAllLabels()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -42,6 +52,10 @@ class ViewController: UIViewController {
 
     @IBAction func blueSliderChanged(_ seÁnder: UISlider) {
         changeBackgroundColor()
+    }
+
+    @IBAction func didSetColor(_ sender: Any) {
+        changeBackgroundColor(forAll: true)
     }
 
     func updateViews(for size: CGSize) {
@@ -67,21 +81,30 @@ class ViewController: UIViewController {
         blueStackView.spacing = 8
     }
 
-    func changeBackgroundColor() {
-        let red = redSlider.value.rounded() / 255
-        let green = greenSlider.value.rounded() / 255
-        let blue = blueSlider.value.rounded() / 255
-        let color = UIColor(red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: 1.0)
-        self.view.backgroundColor = color
-        changeFontColorFor(for: color)
+    func changeBackgroundColor(forAll: Bool = false) {
+        let red = CGFloat(redSlider.value.rounded() / 255)
+        let green = CGFloat(greenSlider.value.rounded() / 255)
+        let blue = CGFloat(blueSlider.value.rounded() / 255)
+        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+
+        changeFontColor(basedOn: color, forAll: forAll)
+        slidersContainer.backgroundColor = color
+        if forAll {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.view.backgroundColor = color
+            })
+        }
     }
 
-    func changeFontColorFor(for backgroundColor: UIColor) {
+    func changeFontColor(basedOn backgroundColor: UIColor, forAll: Bool = true) {
         // First we get luminance/brightness for the color following this algorhythm. https://stackoverflow.com/a/1855903/7403467
         let rgba = backgroundColor.rgba
         let luminance = (0.299 * rgba.red + 0.587 * rgba.green + 0.114 * rgba.blue)
 
+        // then set font colors based on that value
         for label in allLabels {
+            if !forAll && label == headerLabel { continue }
+
             if luminance > 0.5 { // bright colors
                 label.textColor = .black
             } else {
@@ -90,14 +113,14 @@ class ViewController: UIViewController {
         }
     }
 
-    func getAllLabels() { // got too lazy to make outlets :(
-        allLabels.append(headerStackView.viewWithTag(1) as! UILabel)
-        allLabels.append(redStackView.viewWithTag(1) as! UILabel)
-        allLabels.append(greenStackView.viewWithTag(1) as! UILabel)
-        allLabels.append(blueStackView.viewWithTag(1) as! UILabel)
-        allLabels.append(redStackView.viewWithTag(2) as! UILabel)
-        allLabels.append(greenStackView.viewWithTag(2) as! UILabel)
-        allLabels.append(blueStackView.viewWithTag(2) as! UILabel)
+    func setAllLabels() {
+        allLabels.append(headerLabel)
+        allLabels.append(redLabel)
+        allLabels.append(greenLabel)
+        allLabels.append(blueLabel)
+        allLabels.append(currentRedValueLabel)
+        allLabels.append(currentGreenValueLabel)
+        allLabels.append(currentBlueValueLabel)
     }
 }
 
