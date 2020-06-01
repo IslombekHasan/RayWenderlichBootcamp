@@ -31,6 +31,9 @@
                                             <segment title="RGB"/>
                                             <segment title="HSB"/>
                                         </segments>
+                                        <connections>
+                                            <action selector="modeChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="pYf-tu-4Y9"/>
+                                        </connections>
                                     </segmentedControl>
                                 </subviews>
                             </stackView>
@@ -75,10 +78,10 @@
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="STD-7o-ub1">
                                                                 <rect key="frame" x="-2" y="0.0" width="225" height="31"/>
                                                                 <connections>
-                                                                    <action selector="redSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Q43-cI-hAx"/>
+                                                                    <action selector="redSliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="zlN-4Y-mkY"/>
                                                                 </connections>
                                                             </slider>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0F-ak-UlM">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b0F-ak-UlM">
                                                                 <rect key="frame" x="229" y="0.0" width="35" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="Hq4-XF-cjP"/>
@@ -106,10 +109,10 @@
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="Bg4-F2-PHQ">
                                                                 <rect key="frame" x="-2" y="0.0" width="225" height="31"/>
                                                                 <connections>
-                                                                    <action selector="greenSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="Kh8-iX-Jgb"/>
+                                                                    <action selector="greenSliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="qla-z7-gRx"/>
                                                                 </connections>
                                                             </slider>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmF-Ey-FXS">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hmF-Ey-FXS">
                                                                 <rect key="frame" x="229" y="0.0" width="35" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="uQk-1W-8VD"/>
@@ -137,10 +140,10 @@
                                                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="255" translatesAutoresizingMaskIntoConstraints="NO" id="rEX-gU-AUc">
                                                                 <rect key="frame" x="-2" y="0.0" width="225" height="31"/>
                                                                 <connections>
-                                                                    <action selector="blueSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="QSn-bm-ezY"/>
+                                                                    <action selector="blueSliderChanged" destination="BYZ-38-t0r" eventType="valueChanged" id="KWy-qK-GHv"/>
                                                                 </connections>
                                                             </slider>
-                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp6-LH-7LU">
+                                                            <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp6-LH-7LU">
                                                                 <rect key="frame" x="229" y="0.0" width="35" height="30"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="35" id="w2c-1D-wzN"/>
@@ -193,6 +196,7 @@
                         <outlet property="greenStackView" destination="CuL-sC-4dO" id="TW2-Ki-x9n"/>
                         <outlet property="headerLabel" destination="HPp-Ql-c6c" id="uYv-Mw-GbI"/>
                         <outlet property="headerStackView" destination="Dgf-44-mgF" id="bHK-hD-GIK"/>
+                        <outlet property="modeControl" destination="iDS-vt-UDj" id="9Tk-gv-80z"/>
                         <outlet property="redLabel" destination="VOS-3D-XFd" id="kwa-zd-ndN"/>
                         <outlet property="redSlider" destination="STD-7o-ub1" id="Hhh-e2-AwR"/>
                         <outlet property="redStackView" destination="h2u-7v-Nrs" id="JeN-lI-r7N"/>
@@ -212,7 +216,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F6B-AD-lcE">
-                                <rect key="frame" x="8" y="8" width="304" height="478"/>
+                                <rect key="frame" x="8" y="8" width="304" height="482"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -220,7 +224,7 @@
                                 </wkWebViewConfiguration>
                             </wkWebView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UJS-Qn-BQD">
-                                <rect key="frame" x="140.5" y="494" width="39" height="30"/>
+                                <rect key="frame" x="140.5" y="498" width="39" height="30"/>
                                 <state key="normal" title="Close"/>
                                 <connections>
                                     <action selector="close:" destination="XLF-x2-WJm" eventType="touchUpInside" id="9GO-QB-BDs"/>
@@ -234,7 +238,7 @@
                             <constraint firstItem="UJS-Qn-BQD" firstAttribute="centerX" secondItem="lfK-xn-GGc" secondAttribute="centerX" id="VaR-5b-HJI"/>
                             <constraint firstItem="F6B-AD-lcE" firstAttribute="leading" secondItem="no2-RF-QQq" secondAttribute="leading" constant="8" id="e8L-9o-4Qz"/>
                             <constraint firstItem="F6B-AD-lcE" firstAttribute="top" secondItem="no2-RF-QQq" secondAttribute="top" constant="8" id="jbE-rx-GNe"/>
-                            <constraint firstItem="no2-RF-QQq" firstAttribute="bottom" secondItem="UJS-Qn-BQD" secondAttribute="bottom" constant="24" id="l3d-zb-nju"/>
+                            <constraint firstItem="no2-RF-QQq" firstAttribute="bottom" secondItem="UJS-Qn-BQD" secondAttribute="bottom" constant="20" id="l3d-zb-nju"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="no2-RF-QQq"/>
                     </view>

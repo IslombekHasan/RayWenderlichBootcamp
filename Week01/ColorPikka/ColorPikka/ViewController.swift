@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var modeControl: UISegmentedControl!
+
     @IBOutlet weak var headerStackView: UIStackView!
     @IBOutlet weak var slidersContainer: UIView!
     @IBOutlet weak var redStackView: UIStackView!
@@ -42,6 +44,32 @@ class ViewController: UIViewController {
         updateViews(for: size)
     }
 
+    @IBAction func modeChanged(_ sender: UISegmentedControl) {
+
+        if sender.selectedSegmentIndex == 0 {
+            setUpForRGB()
+        } else {
+            setUpForHSB()
+        }
+
+        changeBackgroundColor()
+    }
+
+    @IBAction func redSliderChanged() {
+        currentRedValueLabel.text = String(Int(redSlider.value.rounded()))
+        changeBackgroundColor()
+    }
+
+    @IBAction func greenSliderChanged() {
+        currentGreenValueLabel.text = String(Int(greenSlider.value.rounded()))
+        changeBackgroundColor()
+    }
+
+    @IBAction func blueSliderChanged() {
+        currentBlueValueLabel.text = String(Int(blueSlider.value.rounded()))
+        changeBackgroundColor()
+    }
+
     @IBAction func didSetColor(_ sender: Any) {
 
         let alert = UIAlertController(title: "Set color", message: "Give your color a cute name and see the magic happen! ✨", preferredStyle: .alert)
@@ -67,21 +95,6 @@ class ViewController: UIViewController {
             self.view.backgroundColor = UIColor.systemYellow
             self.slidersContainer.backgroundColor = UIColor.clear
         })
-    }
-
-    @IBAction func redSliderChanged(_ sender: UISlider) {
-        currentRedValueLabel.text = String(Int(sender.value.rounded()))
-        changeBackgroundColor()
-    }
-
-    @IBAction func greenSliderChanged(_ sender: UISlider) {
-        currentGreenValueLabel.text = String(Int(sender.value.rounded()))
-        changeBackgroundColor()
-    }
-
-    @IBAction func blueSliderChanged(_ sender: UISlider) {
-        currentBlueValueLabel.text = String(Int(sender.value.rounded()))
-        changeBackgroundColor()
     }
 
     func updateViews(for size: CGSize) {
@@ -110,10 +123,19 @@ class ViewController: UIViewController {
     }
 
     func changeBackgroundColor(forAll: Bool = false) {
-        let red = CGFloat(redSlider.value.rounded() / 255)
-        let green = CGFloat(greenSlider.value.rounded() / 255)
-        let blue = CGFloat(blueSlider.value.rounded() / 255)
-        let color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        var color: UIColor
+
+        if modeControl.selectedSegmentIndex == 0 {
+            let red = CGFloat(redSlider.value.rounded() / 255)
+            let green = CGFloat(greenSlider.value.rounded() / 255)
+            let blue = CGFloat(blueSlider.value.rounded() / 255)
+            color = UIColor(red: red, green: green, blue: blue, alpha: 1.0)
+        } else {
+            let hue = CGFloat(redSlider.value.rounded() / 360)
+            let saturation = CGFloat(greenSlider.value.rounded() / 100)
+            let brigthness = CGFloat(blueSlider.value.rounded() / 100)
+            color = UIColor(hue: hue, saturation: saturation, brightness: brigthness, alpha: 1.0)
+        }
 
         changeFontColor(basedOn: color, forAll: forAll)
         slidersContainer.backgroundColor = color
@@ -139,6 +161,30 @@ class ViewController: UIViewController {
                 label.textColor = .white
             }
         }
+    }
+
+    func setUpForRGB() {
+        redSlider.maximumValue = 255
+        greenSlider.maximumValue = 255
+        blueSlider.maximumValue = 255
+        redLabel.text = "Red"
+        greenLabel.text = "Green"
+        blueLabel.text = "Blue"
+        redSliderChanged()
+        greenSliderChanged()
+        blueSliderChanged()
+    }
+
+    func setUpForHSB() {
+        redSlider.maximumValue = 360
+        greenSlider.maximumValue = 100
+        blueSlider.maximumValue = 100
+        redLabel.text = "Hue"
+        greenLabel.text = "Saturation"
+        blueLabel.text = "Brightness"
+        redSliderChanged()
+        greenSliderChanged()
+        blueSliderChanged()
     }
 
     func setAllLabels() {
