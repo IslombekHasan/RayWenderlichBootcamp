@@ -14,6 +14,7 @@
 		344F2A432483D6F800207CB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 344F2A422483D6F800207CB2 /* Assets.xcassets */; };
 		344F2A462483D6F800207CB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 344F2A442483D6F800207CB2 /* LaunchScreen.storyboard */; };
 		344F2A4E24843EE100207CB2 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344F2A4D24843EE100207CB2 /* Helpers.swift */; };
+		344F2A50248532DA00207CB2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344F2A4F248532DA00207CB2 /* AboutViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		344F2A452483D6F800207CB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		344F2A472483D6F800207CB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344F2A4D24843EE100207CB2 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
+		344F2A4F248532DA00207CB2 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				344F2A392483D6F300207CB2 /* AppDelegate.swift */,
 				344F2A3B2483D6F300207CB2 /* SceneDelegate.swift */,
 				344F2A3D2483D6F300207CB2 /* ViewController.swift */,
+				344F2A4F248532DA00207CB2 /* AboutViewController.swift */,
 				344F2A4D24843EE100207CB2 /* Helpers.swift */,
 				344F2A3F2483D6F300207CB2 /* Main.storyboard */,
 				344F2A422483D6F800207CB2 /* Assets.xcassets */,
@@ -144,6 +147,7 @@
 				344F2A3E2483D6F300207CB2 /* ViewController.swift in Sources */,
 				344F2A3A2483D6F300207CB2 /* AppDelegate.swift in Sources */,
 				344F2A3C2483D6F300207CB2 /* SceneDelegate.swift in Sources */,
+				344F2A50248532DA00207CB2 /* AboutViewController.swift in Sources */,
 				344F2A4E24843EE100207CB2 /* Helpers.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
