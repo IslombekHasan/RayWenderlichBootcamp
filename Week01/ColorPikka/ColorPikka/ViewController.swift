@@ -58,15 +58,29 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
 
+    @IBAction func reset(_ sender: Any) {
+        redSlider.setValue(0, animated: true)
+        greenSlider.setValue(0, animated: true)
+        blueSlider.setValue(0, animated: true)
+
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.backgroundColor = UIColor.systemYellow
+            self.slidersContainer.backgroundColor = UIColor.clear
+        })
+    }
+
     @IBAction func redSliderChanged(_ sender: UISlider) {
+        currentRedValueLabel.text = String(Int(sender.value.rounded()))
         changeBackgroundColor()
     }
 
     @IBAction func greenSliderChanged(_ sender: UISlider) {
+        currentGreenValueLabel.text = String(Int(sender.value.rounded()))
         changeBackgroundColor()
     }
 
-    @IBAction func blueSliderChanged(_ seÁnder: UISlider) {
+    @IBAction func blueSliderChanged(_ sender: UISlider) {
+        currentBlueValueLabel.text = String(Int(sender.value.rounded()))
         changeBackgroundColor()
     }
 
