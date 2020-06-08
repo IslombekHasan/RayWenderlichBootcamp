@@ -13,6 +13,7 @@
 		3467C6A1248EA21900197C0C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3467C69F248EA21900197C0C /* Main.storyboard */; };
 		3467C6A3248EA21F00197C0C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3467C6A2248EA21F00197C0C /* Assets.xcassets */; };
 		3467C6A6248EA21F00197C0C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3467C6A4248EA21F00197C0C /* LaunchScreen.storyboard */; };
+		3467C6B0248EAA3C00197C0C /* BullsEyeGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3467C6AF248EAA3C00197C0C /* BullsEyeGame.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3467C6A2248EA21F00197C0C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3467C6A5248EA21F00197C0C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3467C6A7248EA21F00197C0C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3467C6AF248EAA3C00197C0C /* BullsEyeGame.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BullsEyeGame.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				3467C699248EA21900197C0C /* AppDelegate.swift */,
 				3467C69B248EA21900197C0C /* SceneDelegate.swift */,
 				3467C69D248EA21900197C0C /* ViewController.swift */,
+				3467C6AF248EAA3C00197C0C /* BullsEyeGame.swift */,
 				3467C69F248EA21900197C0C /* Main.storyboard */,
 				3467C6A2248EA21F00197C0C /* Assets.xcassets */,
 				3467C6A4248EA21F00197C0C /* LaunchScreen.storyboard */,
@@ -138,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3467C6B0248EAA3C00197C0C /* BullsEyeGame.swift in Sources */,
 				3467C69E248EA21900197C0C /* ViewController.swift in Sources */,
 				3467C69A248EA21900197C0C /* AppDelegate.swift in Sources */,
 				3467C69C248EA21900197C0C /* SceneDelegate.swift in Sources */,
@@ -294,7 +298,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.khasanovislombek.RevBullsEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -312,7 +316,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.khasanovislombek.RevBullsEye;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

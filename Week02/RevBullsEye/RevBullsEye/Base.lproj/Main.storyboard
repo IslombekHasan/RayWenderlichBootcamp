@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,123 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RevBullsEye" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <slider opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="1" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="a2t-mm-ve3">
+                                <rect key="frame" x="59" y="318.5" width="257" height="31"/>
+                            </slider>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guess where the slider is:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BtZ-At-tCQ">
+                                <rect key="frame" x="69" y="20" width="197" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xb6-9B-FYK">
+                                <rect key="frame" x="20" y="323" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PCl-ZH-O2X">
+                                <rect key="frame" x="326" y="323" width="29" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WpY-mC-g9I">
+                                <rect key="frame" x="274" y="13.5" width="32" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xGt-Cv-U0m">
+                                <rect key="frame" x="162.5" y="368.5" width="50" height="30"/>
+                                <state key="normal" title="Hit me!"/>
+                                <connections>
+                                    <action selector="hitMe:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uKq-un-wQL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y68-Mq-z9f">
+                                <rect key="frame" x="20" y="587" width="68" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="Start over"/>
+                                <connections>
+                                    <action selector="startOver" destination="BYZ-38-t0r" eventType="touchUpInside" id="5Zt-f8-4uo"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Round" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gE5-VX-RSe">
+                                <rect key="frame" x="305" y="587" width="50" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NUY-Ja-rvd">
+                                <rect key="frame" x="165" y="587" width="45" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwr-j7-LW9">
+                                <rect key="frame" x="171.5" y="67.5" width="32" height="32"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="OVp-dP-A3q"/>
+                                    <constraint firstAttribute="width" constant="32" id="zHC-9W-pek"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="PCl-ZH-O2X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="0Kk-1l-Kk5"/>
+                            <constraint firstItem="BtZ-At-tCQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-20" id="1xg-Th-gES"/>
+                            <constraint firstItem="Kwr-j7-LW9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4G5-hO-gZX"/>
+                            <constraint firstItem="Xb6-9B-FYK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9df-Sl-dXg"/>
+                            <constraint firstItem="xGt-Cv-U0m" firstAttribute="top" secondItem="a2t-mm-ve3" secondAttribute="bottom" constant="20" id="BiW-Vj-NQa"/>
+                            <constraint firstItem="gE5-VX-RSe" firstAttribute="centerY" secondItem="Y68-Mq-z9f" secondAttribute="centerY" id="DGC-JX-ass"/>
+                            <constraint firstItem="BtZ-At-tCQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="DVV-SY-SzP"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="PCl-ZH-O2X" secondAttribute="trailing" constant="20" id="NOf-9w-eDb"/>
+                            <constraint firstItem="Y68-Mq-z9f" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="Nur-p2-6k4"/>
+                            <constraint firstItem="a2t-mm-ve3" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="QwF-Uc-kfE"/>
+                            <constraint firstItem="xGt-Cv-U0m" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="XLl-gy-EiD"/>
+                            <constraint firstItem="WpY-mC-g9I" firstAttribute="leading" secondItem="BtZ-At-tCQ" secondAttribute="trailing" constant="8" id="YWT-70-7nD"/>
+                            <constraint firstItem="Xb6-9B-FYK" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="cN4-0X-8cC"/>
+                            <constraint firstItem="NUY-Ja-rvd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="gax-mf-dvD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NUY-Ja-rvd" secondAttribute="bottom" constant="50" id="knu-NE-P8j"/>
+                            <constraint firstItem="a2t-mm-ve3" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="nq4-np-3jd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y68-Mq-z9f" secondAttribute="bottom" constant="50" id="o7Q-tK-HPC"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="gE5-VX-RSe" secondAttribute="trailing" constant="20" id="oys-ah-1FC"/>
+                            <constraint firstItem="WpY-mC-g9I" firstAttribute="centerY" secondItem="BtZ-At-tCQ" secondAttribute="centerY" id="p2R-dX-3CR"/>
+                            <constraint firstItem="Kwr-j7-LW9" firstAttribute="top" secondItem="WpY-mC-g9I" secondAttribute="bottom" constant="20" id="q6P-8U-0dn"/>
+                            <constraint firstItem="a2t-mm-ve3" firstAttribute="leading" secondItem="Xb6-9B-FYK" secondAttribute="trailing" constant="12" id="uNe-M1-gnD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="gE5-VX-RSe" secondAttribute="bottom" constant="50" id="vzk-c5-SCe"/>
+                            <constraint firstItem="PCl-ZH-O2X" firstAttribute="leading" secondItem="a2t-mm-ve3" secondAttribute="trailing" constant="12" id="y98-Y2-mDy"/>
+                            <constraint firstItem="NUY-Ja-rvd" firstAttribute="centerY" secondItem="Y68-Mq-z9f" secondAttribute="centerY" id="zGi-Vh-7TM"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="krp-3O-YJw" appends="YES" id="Coy-kn-2cx"/>
+                        </connections>
                     </view>
+                    <connections>
+                        <outlet property="guessNumber" destination="WpY-mC-g9I" id="sqi-zl-ssN"/>
+                        <outlet property="hitMeButton" destination="xGt-Cv-U0m" id="57l-pW-0HD"/>
+                        <outlet property="roundLabel" destination="gE5-VX-RSe" id="UP8-QV-ssN"/>
+                        <outlet property="scoreLabel" destination="NUY-Ja-rvd" id="d1d-cA-RUH"/>
+                        <outlet property="slider" destination="a2t-mm-ve3" id="TXi-eh-Cw0"/>
+                        <outlet property="warmOrColdView" destination="Kwr-j7-LW9" id="pgN-FG-zRG"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="krp-3O-YJw">
+                    <connections>
+                        <action selector="userTapped:" destination="BYZ-38-t0r" id="KWG-vy-gMG"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
+            <point key="canvasLocation" x="132" y="139"/>
         </scene>
     </scenes>
 </document>
