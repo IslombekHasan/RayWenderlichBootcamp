@@ -34,10 +34,6 @@ class BullsEyeGame {
         startNewRound()
     }
 
-    func getValues() -> (String, String, String) {
-        (String(targetValue), String(score), String(round))
-    }
-
     func getScoreMessage() -> (String, String) {
         let difference = abs(targetValue - currentValue)
         var points = 100 - difference

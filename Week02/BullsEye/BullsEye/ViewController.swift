@@ -39,7 +39,6 @@ class ViewController: UIViewController {
         alert.addAction(action)
 
         present(alert, animated: true, completion: nil)
-
     }
 
     @IBAction func sliderMoved(_ slider: UISlider) {
@@ -48,7 +47,7 @@ class ViewController: UIViewController {
     }
 
     func updateViews() {
-        (targetLabel.text, scoreLabel.text, roundLabel.text) = game.getValues()
+        (targetLabel.text, scoreLabel.text, roundLabel.text) = (String(game.targetValue), String(game.score), String(game.round))
         slider.value = 50
     }
 
