@@ -28,19 +28,19 @@
         <!--Home View Controller-->
         <scene sceneID="9KI-BV-L4a">
             <objects>
-                <viewController id="5r6-eT-R08" customClass="HomeViewController" customModule="Cryptly_starter" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5r6-eT-R08" customClass="HomeViewController" customModule="Cryptly" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mvF-6T-uLm">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CryptoCurrencies" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zrp-g0-HX2">
-                                <rect key="frame" x="20" y="128" width="374" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <rect key="frame" x="20" y="128" width="374" height="28.666666666666657"/>
+                                <fontDescription key="fontDescription" type="italicSystem" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oo-MW-3FZ">
-                                <rect key="frame" x="20" y="189" width="374" height="120"/>
+                                <rect key="frame" x="20" y="196.66666666666663" width="374" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pP-O3-GIK">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
@@ -59,7 +59,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpI-h7-D97">
-                                <rect key="frame" x="20" y="329" width="374" height="120"/>
+                                <rect key="frame" x="20" y="336.66666666666669" width="374" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-T8-YB9">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
@@ -78,7 +78,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNM-6D-sSb">
-                                <rect key="frame" x="20" y="469" width="374" height="120"/>
+                                <rect key="frame" x="20" y="476.66666666666674" width="374" height="120"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-Bb-EWS">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
@@ -116,7 +116,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="mL2-rx-U9s">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="ug4-v8-lt1">
-                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kW6-Ms-UCP">
+                            <switch key="customView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="kW6-Ms-UCP">
                                 <rect key="frame" x="343" y="6.6666666666666679" width="51" height="31.000000000000004"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>

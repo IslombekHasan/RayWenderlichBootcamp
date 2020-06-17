@@ -65,10 +65,13 @@ class HomeViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    registerForTheme()
+    setUpInitialTheme()
   }
 
   override func viewWillDisappear(_ animated: Bool) {
     super.viewWillDisappear(animated)
+    unregisterForTheme()
   }
 
   func setupViews() {
@@ -110,5 +113,50 @@ class HomeViewController: UIViewController {
   }
 
   @IBAction func switchPressed(_ sender: Any) {
+    ThemeManager.shared.set(theme: themeSwitch.isOn ? DarkTheme() : LightTheme())
   }
+}
+
+extension HomeViewController: Themable {
+
+  func setUpInitialTheme() {
+
+    let gradient = CAGradientLayer()
+    gradient.frame = self.view.bounds
+    gradient.startPoint = CGPoint(x: 0, y: 0)
+    view.layer.insertSublayer(gradient, at: 0)
+
+    guard let theme = UserDefaults.standard.object(forKey: "theme") as? Theme else {
+      ThemeManager.shared.set(theme: LightTheme())
+      return
+    }
+    ThemeManager.shared.set(theme: theme)
+  }
+
+  @objc func themeChanged() {
+    let theme = ThemeManager.shared.currentTheme
+
+    UIView.animate(withDuration: 0.4, animations: {
+      let gradient = self.view.layer.sublayers?[0] as! CAGradientLayer
+      gradient.colors = theme?.backgroundColors.map { $0.cgColor }
+
+      [self.view1, self.view2, self.view3].forEach { (view) in
+        view?.backgroundColor = theme?.widgetBackgroundColor
+        view?.layer.borderColor = theme?.borderColor.cgColor
+      }
+
+      [self.headingLabel, self.view1TextLabel, self.view2TextLabel, self.view3TextLabel].forEach { (label) in
+        label?.textColor = theme?.textColor
+      }
+    })
+  }
+
+  func registerForTheme() {
+    NotificationCenter.default.addObserver(self, selector: #selector(themeChanged), name: Notification.Name.init("themeChanged"), object: nil)
+  }
+
+  func unregisterForTheme() {
+    NotificationCenter.default.removeObserver(self)
+  }
+
 }
