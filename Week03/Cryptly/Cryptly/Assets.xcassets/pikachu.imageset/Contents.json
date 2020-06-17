@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "Pikachu-PNG-HD.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Pikachu-PNG-HD.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
