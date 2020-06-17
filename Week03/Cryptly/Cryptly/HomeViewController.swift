@@ -34,9 +34,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-  @IBOutlet weak var view1: UIView!
-  @IBOutlet weak var view2: UIView!
-  @IBOutlet weak var view3: UIView!
+  @IBOutlet weak var view1: CryptoView!
+  @IBOutlet weak var view2: CryptoView!
+  @IBOutlet weak var view3: CryptoView!
   @IBOutlet weak var headingLabel: UILabel!
   @IBOutlet weak var view1TextLabel: UILabel!
   @IBOutlet weak var view2TextLabel: UILabel!
@@ -50,17 +50,14 @@ class HomeViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
     if let data = cryptoData {
       allCrypto = data
       raisedCrypto = data.filter { $0.currentValue > $0.previousValue }
       fallenCrypto = data.filter { $0.previousValue > $0.currentValue }
     }
 
-    setupViews()
     setupLabels()
-    setData(for: view1TextLabel, with: allCrypto)
-    setData(for: view2TextLabel, with: raisedCrypto)
-    setData(for: view3TextLabel, with: fallenCrypto)
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -74,37 +71,15 @@ class HomeViewController: UIViewController {
     unregisterForTheme()
   }
 
-  func setupViews() {
-
-    view1.backgroundColor = .systemGray6
-    view1.layer.borderColor = UIColor.lightGray.cgColor
-    view1.layer.borderWidth = 1.0
-    view1.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-    view1.layer.shadowOffset = CGSize(width: 0, height: 2)
-    view1.layer.shadowRadius = 4
-    view1.layer.shadowOpacity = 0.8
-
-    view2.backgroundColor = .systemGray6
-    view2.layer.borderColor = UIColor.lightGray.cgColor
-    view2.layer.borderWidth = 1.0
-    view2.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-    view2.layer.shadowOffset = CGSize(width: 0, height: 2)
-    view2.layer.shadowRadius = 4
-    view2.layer.shadowOpacity = 0.8
-
-    view3.backgroundColor = .systemGray6
-    view3.layer.borderColor = UIColor.lightGray.cgColor
-    view3.layer.borderWidth = 1.0
-    view3.layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
-    view3.layer.shadowOffset = CGSize(width: 0, height: 2)
-    view3.layer.shadowRadius = 4
-    view3.layer.shadowOpacity = 0.8
-  }
-
   func setupLabels() {
     headingLabel.font = UIFont.systemFont(ofSize: 20, weight: .medium)
     view1TextLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
     view2TextLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+    view3TextLabel.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+
+    setData(for: view1TextLabel, with: allCrypto)
+    setData(for: view2TextLabel, with: raisedCrypto)
+    setData(for: view3TextLabel, with: fallenCrypto)
   }
 
   func setData(for label: UILabel, with data: [CryptoCurrency]) {
@@ -120,26 +95,24 @@ class HomeViewController: UIViewController {
 extension HomeViewController: Themable {
 
   func setUpInitialTheme() {
-
     let gradient = CAGradientLayer()
     gradient.frame = self.view.bounds
     gradient.startPoint = CGPoint(x: 0, y: 0)
     view.layer.insertSublayer(gradient, at: 0)
 
-    guard let theme = UserDefaults.standard.object(forKey: "theme") as? Theme else {
+    if let theme = UserDefaults.standard.object(forKey: "theme") as? Theme {
+      ThemeManager.shared.set(theme: theme)
+    } else {
       ThemeManager.shared.set(theme: LightTheme())
-      return
     }
-    ThemeManager.shared.set(theme: theme)
   }
 
   @objc func themeChanged() {
     let theme = ThemeManager.shared.currentTheme
-
+    let gradient = self.view.layer.sublayers?[0] as! CAGradientLayer
+    gradient.colors = theme?.backgroundColors.map { $0.cgColor }
+    
     UIView.animate(withDuration: 0.4, animations: {
-      let gradient = self.view.layer.sublayers?[0] as! CAGradientLayer
-      gradient.colors = theme?.backgroundColors.map { $0.cgColor }
-
       [self.view1, self.view2, self.view3].forEach { (view) in
         view?.backgroundColor = theme?.widgetBackgroundColor
         view?.layer.borderColor = theme?.borderColor.cgColor
