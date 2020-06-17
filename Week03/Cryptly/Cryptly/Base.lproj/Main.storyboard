@@ -42,7 +42,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oo-MW-3FZ" customClass="CryptoView" customModule="Cryptly" customModuleProvider="target">
                                 <rect key="frame" x="20" y="196.66666666666663" width="374" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pP-O3-GIK">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2pP-O3-GIK" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -61,7 +61,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DpI-h7-D97" customClass="CryptoView" customModule="Cryptly" customModuleProvider="target">
                                 <rect key="frame" x="20" y="336.66666666666669" width="374" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-T8-YB9">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPy-T8-YB9" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -80,7 +80,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNM-6D-sSb" customClass="CryptoView" customModule="Cryptly" customModuleProvider="target">
                                 <rect key="frame" x="20" y="476.66666666666674" width="374" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-Bb-EWS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCh-Bb-EWS" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
                                         <rect key="frame" x="20" y="20" width="334" height="80"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -96,21 +96,82 @@
                                     <constraint firstItem="UCh-Bb-EWS" firstAttribute="top" secondItem="DNM-6D-sSb" secondAttribute="top" constant="20" id="yJk-b2-7eV"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RY4-L7-1gi" customClass="CryptoView" customModule="Cryptly" customModuleProvider="target">
+                                <rect key="frame" x="20" y="616.66666666666663" width="177" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Falling" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5jV-oP-A9G" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="137" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zlA-QM-7XX" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="79" width="137" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="07I-h4-al4"/>
+                                    <constraint firstAttribute="trailing" secondItem="zlA-QM-7XX" secondAttribute="trailing" constant="20" id="0DN-V7-KeH"/>
+                                    <constraint firstItem="5jV-oP-A9G" firstAttribute="leading" secondItem="RY4-L7-1gi" secondAttribute="leading" constant="20" id="5ax-OW-YiO"/>
+                                    <constraint firstItem="zlA-QM-7XX" firstAttribute="leading" secondItem="RY4-L7-1gi" secondAttribute="leading" constant="20" id="9Rt-Cr-GJP"/>
+                                    <constraint firstItem="5jV-oP-A9G" firstAttribute="top" secondItem="RY4-L7-1gi" secondAttribute="top" constant="20" id="H1L-gV-1rF"/>
+                                    <constraint firstAttribute="height" constant="120" id="Wdl-ZQ-YIZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="5jV-oP-A9G" secondAttribute="trailing" constant="20" id="fF3-xc-g2G"/>
+                                    <constraint firstAttribute="bottom" secondItem="zlA-QM-7XX" secondAttribute="bottom" constant="20" id="xAx-9d-C2k"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VnG-H7-UQc" customClass="CryptoView" customModule="Cryptly" customModuleProvider="target">
+                                <rect key="frame" x="217" y="616.66666666666663" width="177" height="120"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Most Rising" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D4v-EW-hZa" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="20" width="137" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eok-Ss-a7U" customClass="CryptoDataLabel" customModule="Cryptly" customModuleProvider="target">
+                                        <rect key="frame" x="20" y="79" width="137" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eok-Ss-a7U" firstAttribute="leading" secondItem="VnG-H7-UQc" secondAttribute="leading" constant="20" id="AXf-41-gtg"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="120" id="CAR-M7-QBR"/>
+                                    <constraint firstAttribute="trailing" secondItem="eok-Ss-a7U" secondAttribute="trailing" constant="20" id="LdI-Wj-0OE"/>
+                                    <constraint firstAttribute="trailing" secondItem="D4v-EW-hZa" secondAttribute="trailing" constant="20" id="PgE-AQ-Bgz"/>
+                                    <constraint firstItem="D4v-EW-hZa" firstAttribute="leading" secondItem="VnG-H7-UQc" secondAttribute="leading" constant="20" id="Qmv-bD-6w3"/>
+                                    <constraint firstAttribute="bottom" secondItem="eok-Ss-a7U" secondAttribute="bottom" constant="20" id="hbP-gV-WOw"/>
+                                    <constraint firstAttribute="height" constant="120" id="mTk-U0-jTv"/>
+                                    <constraint firstItem="D4v-EW-hZa" firstAttribute="top" secondItem="VnG-H7-UQc" secondAttribute="top" constant="20" id="sNA-un-kgo"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="DpI-h7-D97" firstAttribute="leading" secondItem="mvF-6T-uLm" secondAttribute="leading" constant="20" id="2cv-RA-EmD"/>
                             <constraint firstItem="zrp-g0-HX2" firstAttribute="leading" secondItem="mvF-6T-uLm" secondAttribute="leading" constant="20" id="BgQ-lJ-slU"/>
+                            <constraint firstItem="RY4-L7-1gi" firstAttribute="leading" secondItem="Fco-UW-GoN" secondAttribute="leading" constant="20" id="C3f-qG-ZSq"/>
                             <constraint firstItem="4oo-MW-3FZ" firstAttribute="leading" secondItem="mvF-6T-uLm" secondAttribute="leading" constant="20" id="GvF-pu-eyv"/>
                             <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="DNM-6D-sSb" secondAttribute="trailing" constant="20" id="I1I-JT-7up"/>
                             <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="4oo-MW-3FZ" secondAttribute="trailing" constant="20" id="MxD-dP-hsS"/>
                             <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="DpI-h7-D97" secondAttribute="trailing" constant="20" id="RFO-t4-BUV"/>
                             <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="zrp-g0-HX2" secondAttribute="trailing" constant="20" id="Vzo-W1-7AZ"/>
                             <constraint firstItem="DNM-6D-sSb" firstAttribute="leading" secondItem="mvF-6T-uLm" secondAttribute="leading" constant="20" id="e8x-Td-nAc"/>
+                            <constraint firstItem="VnG-H7-UQc" firstAttribute="top" secondItem="DNM-6D-sSb" secondAttribute="bottom" constant="20" id="erB-Az-RYk"/>
+                            <constraint firstItem="RY4-L7-1gi" firstAttribute="top" secondItem="DNM-6D-sSb" secondAttribute="bottom" constant="20" id="fJF-Tl-svO"/>
+                            <constraint firstItem="Fco-UW-GoN" firstAttribute="trailing" secondItem="VnG-H7-UQc" secondAttribute="trailing" constant="20" id="fcD-Re-g6r"/>
                             <constraint firstItem="DpI-h7-D97" firstAttribute="top" secondItem="4oo-MW-3FZ" secondAttribute="bottom" constant="20" id="g2p-cS-0t7"/>
                             <constraint firstItem="zrp-g0-HX2" firstAttribute="top" secondItem="Fco-UW-GoN" secondAttribute="top" constant="40" id="g3g-yP-sVY"/>
                             <constraint firstItem="4oo-MW-3FZ" firstAttribute="top" secondItem="zrp-g0-HX2" secondAttribute="bottom" constant="40" id="it9-nc-0c9"/>
                             <constraint firstItem="DNM-6D-sSb" firstAttribute="top" secondItem="DpI-h7-D97" secondAttribute="bottom" constant="20" id="mig-iG-dA2"/>
+                            <constraint firstItem="RY4-L7-1gi" firstAttribute="width" secondItem="mvF-6T-uLm" secondAttribute="width" multiplier="0.5" constant="-30" id="oZy-hn-siO"/>
+                            <constraint firstItem="VnG-H7-UQc" firstAttribute="width" secondItem="mvF-6T-uLm" secondAttribute="width" multiplier="0.5" constant="-30" id="uyN-cZ-djV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Fco-UW-GoN"/>
                     </view>
@@ -129,11 +190,13 @@
                         <outlet property="headingLabel" destination="zrp-g0-HX2" id="CEx-vX-zmI"/>
                         <outlet property="themeSwitch" destination="kW6-Ms-UCP" id="Vpv-W6-XtS"/>
                         <outlet property="view1" destination="4oo-MW-3FZ" id="Chy-pb-2Rm"/>
-                        <outlet property="view1TextLabel" destination="2pP-O3-GIK" id="L2m-KB-P6Q"/>
+                        <outlet property="view1TextLabel" destination="2pP-O3-GIK" id="zB5-lV-UPA"/>
                         <outlet property="view2" destination="DpI-h7-D97" id="HYU-jm-wIC"/>
-                        <outlet property="view2TextLabel" destination="tPy-T8-YB9" id="VJN-xd-312"/>
+                        <outlet property="view2TextLabel" destination="tPy-T8-YB9" id="Ukx-YV-Wmm"/>
                         <outlet property="view3" destination="DNM-6D-sSb" id="vvf-hZ-HwO"/>
-                        <outlet property="view3TextLabel" destination="UCh-Bb-EWS" id="8RB-Dk-G3v"/>
+                        <outlet property="view3TextLabel" destination="UCh-Bb-EWS" id="piK-xI-fS4"/>
+                        <outlet property="view4TextLabel" destination="zlA-QM-7XX" id="8Po-eh-P4t"/>
+                        <outlet property="view5TextLabel" destination="eok-Ss-a7U" id="MWY-0e-7Or"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="szC-q4-zjU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

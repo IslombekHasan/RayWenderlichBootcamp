@@ -38,12 +38,25 @@ class CryptoView: UIView {
   required init?(coder: NSCoder) {
     super.init(coder: coder)
 
+    backgroundColor = .systemGray6
+    layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1.0
     layer.shadowColor = UIColor.black.withAlphaComponent(0.2).cgColor
     layer.shadowOffset = CGSize(width: 0, height: 2)
     layer.shadowRadius = 4
     layer.shadowOpacity = 1
   }
+}
+
+class CryptoDataLabel: UILabel {
+
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+
+    self.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+    self.numberOfLines = 0
+  }
+
 }
 
 
