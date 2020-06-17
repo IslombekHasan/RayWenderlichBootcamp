@@ -33,11 +33,26 @@
 import Foundation
 import UIKit
 
-class CryptoView: UIView {
+protocol Roundable: UIView {
+  var cornerRadius: CGFloat { get set }
+  func round()
+}
+
+extension Roundable {
+  func round() {
+    self.layer.cornerRadius = self.cornerRadius
+  }
+}
+
+class CryptoView: UIView, Roundable {
+  var cornerRadius: CGFloat
 
   required init?(coder: NSCoder) {
+    cornerRadius = 20
+    
     super.init(coder: coder)
 
+    round()
     backgroundColor = .systemGray6
     layer.borderColor = UIColor.lightGray.cgColor
     layer.borderWidth = 1.0
@@ -46,10 +61,15 @@ class CryptoView: UIView {
     layer.shadowRadius = 4
     layer.shadowOpacity = 1
   }
+
+  // This gave me an error :((((
+//  init?(coder: NSCoder, cornerRadius: CGFloat) {
+//    self.cornerRadius = cornerRadius
+//    super.init(coder: coder)
+//  }
 }
 
 class CryptoDataLabel: UILabel {
-
   required init?(coder: NSCoder) {
     super.init(coder: coder)
 
