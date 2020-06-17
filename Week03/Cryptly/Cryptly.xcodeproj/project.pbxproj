@@ -336,7 +336,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Cryptly-starter/Info.plist";
+				DEVELOPMENT_TEAM = F3VPYQS5R8;
+				INFOPLIST_FILE = Cryptly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -353,7 +354,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = "Cryptly-starter/Info.plist";
+				DEVELOPMENT_TEAM = F3VPYQS5R8;
+				INFOPLIST_FILE = Cryptly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
