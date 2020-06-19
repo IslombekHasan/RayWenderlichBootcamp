@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        house1 = House(address: "Andijan, Uzbekistan", price: "$12,000", bedrooms: "3 bedrooms")
+        house1 = House(address: "1, Lonely Cactus 🌵 Street, Desert 🏜", price: "$1.00", bedrooms: "0..<Horizon 🌅")
 
         setUpLeftSideUI()
         setUpRightSideUI()
@@ -47,6 +47,10 @@ class ViewController: UIViewController {
             priceLabelRight.alpha = 0
             roomLabelRight.alpha = 0
         } else {
+            titleLabelRight.alpha = 1
+            imageViewRight.alpha = 1
+            priceLabelRight.alpha = 1
+            roomLabelRight.alpha = 1
             titleLabelRight.text! = house2!.address!
             priceLabelRight.text! = house2!.price!
             roomLabelRight.text! = house2!.bedrooms!
