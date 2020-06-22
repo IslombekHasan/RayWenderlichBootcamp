@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
 
-    var compatibilityItems = ["Cats 😺", "Dogs 🐶", "Space 🌌", "Pikachu", "RW :]"] // Add more!
+    var compatibilityItems = ["Cats 😺", "Dogs 🐶", "Space 🌌", "Large Hadron Collider ⚛", "RW :]"] // Add more!
     var currentItemIndex: Int = 0 {
         didSet {
             if currentItemIndex == compatibilityItems.count - 1 {
@@ -51,17 +51,16 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didPressActionButton(_ sender: UIButton) {
+
+        if sender.title(for: .normal) != ButtonState.start.rawValue {
+            recordResult()
+        }
+
         switch sender.title(for: .normal) {
         case ButtonState.start.rawValue:
             questionLabel.isHidden = false
             slider.isHidden = false
             setCurrentPerson(to: person1)
-
-        case ButtonState.nextItem.rawValue:
-            let currentItem = compatibilityItems[currentItemIndex]
-            currentPerson?.items.updateValue(slider.value, forKey: currentItem)
-            currentItemIndex += 1
-            showComparisonItem()
 
         case ButtonState.nextPerson.rawValue:
             setCurrentPerson(to: person2)
@@ -70,10 +69,8 @@ class ViewController: UIViewController {
             finishComparison()
 
         default:
-            print("Oops, what should we do now 🤔?")
             break
         }
-
     }
 
     func reset() {
@@ -84,6 +81,13 @@ class ViewController: UIViewController {
         person1.items = [:]
         person2.items = [:]
         compatibilityItemLabel.text = "PikaMate"
+    }
+
+    func recordResult() {
+        let currentItem = compatibilityItems[currentItemIndex]
+        currentPerson?.items.updateValue(slider.value, forKey: currentItem)
+        currentItemIndex += 1
+        showComparisonItem()
     }
 
     func finishComparison() {
@@ -110,7 +114,6 @@ class ViewController: UIViewController {
 
         let sumOfAllPercentages = percentagesForAllItems.reduce(0, +)
         let matchPercentage = sumOfAllPercentages / Double(compatibilityItems.count)
-        print(matchPercentage, "%")
         let matchString = 100 - (matchPercentage * 100).rounded()
         return matchString
     }
