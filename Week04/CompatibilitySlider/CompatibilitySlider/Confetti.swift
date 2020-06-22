@@ -60,171 +60,177 @@ enum ConfettiPosition {
     case background
 }
 
-var confettiTypes: [ConfettiType] = {
-    let confettiColors = [
-        (r: 149, g: 58, b: 255), (r: 255, g: 195, b: 41), (r: 255, g: 101, b: 26),
-        (r: 123, g: 92, b: 255), (r: 76, g: 126, b: 255), (r: 71, g: 192, b: 255),
-        (r: 255, g: 47, b: 39), (r: 255, g: 91, b: 134), (r: 233, g: 122, b: 208)
-    ].map { UIColor(red: $0.r / 255.0, green: $0.g / 255.0, blue: $0.b / 255.0, alpha: 1) }
+protocol ConfettiShowable {
 
-    // For each position x shape x color, construct an image
-    return [ConfettiPosition.foreground, ConfettiPosition.background].flatMap { position in
-        return [ConfettiShape.rectangle, ConfettiShape.circle].flatMap { shape in
-            return confettiColors.map { color in
-                return ConfettiType(color: color, shape: shape, position: position)
-            }
+    // Step 1: Basic Emitter Layer Setup
+    var confettiTypes: [ConfettiType] { get }
+    func createConfettiCells() -> [CAEmitterCell]
+
+    func createBehavior(type: String) -> NSObject
+
+    // Step 2: Wave Effect to CAEmitterBehavior
+    func horizontalWaveBehavior() -> Any
+    func verticalWaveBehavior() -> Any
+
+    // Step 3: More Attractive Confetti
+    func attractorBehavior(for emitterLayer: CAEmitterLayer) -> Any
+    func addBehaviors(to layer: CAEmitterLayer)
+
+    // Step 4: Animations & Explosions
+    func addAttractorAnimation(to layer: CALayer)
+    func addBirthrateAnimation(to layer: CALayer)
+    func addAnimations(to layer: CAEmitterLayer)
+
+    // Step 5: Air Resistance & Gravity
+    func dragBehavior() -> Any
+    func addDragAnimation(to layer: CALayer)
+    func addGravityAnimation(to layer: CALayer)
+
+    // Step 6: Background & Foreground
+    func createConfettiLayer(in view: UIView) -> CAEmitterLayer
+    var foregroundConfettiLayer: CAEmitterLayer { get }
+    var backgroundConfettiLayer: CAEmitterLayer { get }
+}
+
+extension ConfettiShowable {
+
+    // Step 1: Basic Emitter Layer Setup
+
+    func createConfettiCells() -> [CAEmitterCell] {
+        return confettiTypes.map { confettiType in
+            let cell = CAEmitterCell()
+            cell.name = confettiType.name
+
+            cell.beginTime = 0.1
+            cell.birthRate = 100
+            //        cell.contents = UIImage(named: "great")!.cgImage
+            cell.contents = confettiType.image.cgImage
+            cell.emissionRange = CGFloat(Double.pi)
+            cell.lifetime = 10
+            cell.spin = 4
+            cell.spinRange = 8
+            cell.velocityRange = 0
+            cell.yAcceleration = 0
+
+            // Step 3: A _New_ Spin On Things
+
+            cell.setValue("plane", forKey: "particleType")
+            cell.setValue(Double.pi, forKey: "orientationRange")
+            cell.setValue(Double.pi / 2, forKey: "orientationLongitude")
+            cell.setValue(Double.pi / 2, forKey: "orientationLatitude")
+
+            return cell
         }
     }
-}()
 
-// Step 2: Basic Emitter Layer Setup
-
-func createConfettiCells() -> [CAEmitterCell] {
-    return confettiTypes.map { confettiType in
-        let cell = CAEmitterCell()
-        cell.name = confettiType.name
-
-        cell.beginTime = 0.1
-        cell.birthRate = 100
-//        cell.contents = UIImage(named: "great")!.cgImage
-        cell.contents = confettiType.image.cgImage
-        cell.emissionRange = CGFloat(Double.pi)
-        cell.lifetime = 10
-        cell.spin = 4
-        cell.spinRange = 8
-        cell.velocityRange = 0
-        cell.yAcceleration = 0
-
-        // Step 3: A _New_ Spin On Things
-
-        cell.setValue("plane", forKey: "particleType")
-        cell.setValue(Double.pi, forKey: "orientationRange")
-        cell.setValue(Double.pi / 2, forKey: "orientationLongitude")
-        cell.setValue(Double.pi / 2, forKey: "orientationLatitude")
-
-        return cell
+    func createBehavior(type: String) -> NSObject {
+        let behaviorClass = NSClassFromString("CAEmitterBehavior") as! NSObject.Type
+        let behaviorWithType = behaviorClass.method(for: NSSelectorFromString("behaviorWithType:"))!
+        let castedBehaviorWithType = unsafeBitCast(behaviorWithType, to: (@convention(c)(Any?, Selector, Any?) -> NSObject).self)
+        return castedBehaviorWithType(behaviorClass, NSSelectorFromString("behaviorWithType:"), type)
     }
-}
 
-// Step 4: _Wave_ Hello to CAEmitterBehavior
-
-/*
- Returns a new CAEmitterBehavior with the given name.
- 
- For Swift Playgrounds, it's easier to use runtime methods
- than to add a CAEmitterBehavior header to the project.
- Originally from https://bryce.co/caemitterbehavior/
- */
-func createBehavior(type: String) -> NSObject {
-    let behaviorClass = NSClassFromString("CAEmitterBehavior") as! NSObject.Type
-    let behaviorWithType = behaviorClass.method(for: NSSelectorFromString("behaviorWithType:"))!
-    let castedBehaviorWithType = unsafeBitCast(behaviorWithType, to: (@convention(c)(Any?, Selector, Any?) -> NSObject).self)
-    return castedBehaviorWithType(behaviorClass, NSSelectorFromString("behaviorWithType:"), type)
-}
-
-func horizontalWaveBehavior() -> Any {
-    let behavior = createBehavior(type: "wave")
-    behavior.setValue([100, 0, 0], forKeyPath: "force")
-    behavior.setValue(0.5, forKeyPath: "frequency")
-    return behavior
-}
-
-func verticalWaveBehavior() -> Any {
-    let behavior = createBehavior(type: "wave")
-    behavior.setValue([0, 500, 0], forKeyPath: "force")
-    behavior.setValue(3, forKeyPath: "frequency")
-    return behavior
-}
-
-// Step 5: More _Attractive_ Confetti
-
-func attractorBehavior(for emitterLayer: CAEmitterLayer) -> Any {
-    let behavior = createBehavior(type: "attractor")
-    behavior.setValue("attractor", forKeyPath: "name")
-
-    // Attractiveness
-    behavior.setValue(-290, forKeyPath: "falloff")
-    behavior.setValue(300, forKeyPath: "radius")
-    behavior.setValue(10, forKeyPath: "stiffness")
-
-    // Position
-    behavior.setValue(CGPoint(x: emitterLayer.emitterPosition.x,
-                              y: emitterLayer.emitterPosition.y + 20),
-                      forKeyPath: "position")
-    behavior.setValue(-70, forKeyPath: "zPosition")
-
-    return behavior
-}
-
-func addBehaviors(to layer: CAEmitterLayer) {
-    layer.setValue([
-        horizontalWaveBehavior(),
-        verticalWaveBehavior(),
-        attractorBehavior(for: layer)
-    ], forKey: "emitterBehaviors")
-}
-
-// Step 6: Animations & Explosions
-
-func addAttractorAnimation(to layer: CALayer) {
-    let animation = CAKeyframeAnimation()
-    animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
-    animation.duration = 3
-    animation.keyTimes = [0, 0.4]
-    animation.values = [80, 5]
-
-    layer.add(animation, forKey: "emitterBehaviors.attractor.stiffness")
-}
-
-func addBirthrateAnimation(to layer: CALayer) {
-    let animation = CABasicAnimation()
-    animation.duration = 1
-    animation.fromValue = 1
-    animation.toValue = 0
-
-    layer.add(animation, forKey: "birthRate")
-}
-
-func addAnimations(to layer: CAEmitterLayer) {
-    addAttractorAnimation(to: layer)
-    addBirthrateAnimation(to: layer)
-    addGravityAnimation(to: layer)
-}
-
-// Step 7: Air Resistance & Gravity
-
-func dragBehavior() -> Any {
-    let behavior = createBehavior(type: "drag")
-    behavior.setValue("drag", forKey: "name")
-    behavior.setValue(2, forKey: "drag")
-
-    return behavior
-}
-
-func addDragAnimation(to layer: CALayer) {
-    let animation = CABasicAnimation()
-    animation.duration = 0.35
-    animation.fromValue = 0
-    animation.toValue = 2
-
-    layer.add(animation, forKey: "emitterBehaviors.drag.drag")
-}
-
-func addGravityAnimation(to layer: CALayer) {
-    let animation = CAKeyframeAnimation()
-    animation.duration = 6
-    animation.keyTimes = [0.05, 0.1, 0.5, 1]
-    animation.values = [0, 100, 2000, 4000]
-
-    for image in confettiTypes {
-        layer.add(animation, forKey: "emitterCells.\(image.name).yAcceleration")
+    // Step 2: Wave Effect to CAEmitterBehavior
+    func horizontalWaveBehavior() -> Any {
+        let behavior = createBehavior(type: "wave")
+        behavior.setValue([100, 0, 0], forKeyPath: "force")
+        behavior.setValue(0.5, forKeyPath: "frequency")
+        return behavior
     }
-}
 
-// Step 8: Background & Foreground
-extension ViewController {
+    func verticalWaveBehavior() -> Any {
+        let behavior = createBehavior(type: "wave")
+        behavior.setValue([0, 500, 0], forKeyPath: "force")
+        behavior.setValue(3, forKeyPath: "frequency")
+        return behavior
+    }
 
-    func createConfettiLayer() -> CAEmitterLayer {
+    // Step 3: More Attractive Confetti
+    func attractorBehavior(for emitterLayer: CAEmitterLayer) -> Any {
+        let behavior = createBehavior(type: "attractor")
+        behavior.setValue("attractor", forKeyPath: "name")
+
+        // Attractiveness
+        behavior.setValue(-290, forKeyPath: "falloff")
+        behavior.setValue(300, forKeyPath: "radius")
+        behavior.setValue(10, forKeyPath: "stiffness")
+
+        // Position
+        behavior.setValue(CGPoint(x: emitterLayer.emitterPosition.x,
+                                  y: emitterLayer.emitterPosition.y + 20),
+                          forKeyPath: "position")
+        behavior.setValue(-70, forKeyPath: "zPosition")
+
+        return behavior
+    }
+
+    func addBehaviors(to layer: CAEmitterLayer) {
+        layer.setValue([
+            horizontalWaveBehavior(),
+            verticalWaveBehavior(),
+            attractorBehavior(for: layer)
+        ], forKey: "emitterBehaviors")
+    }
+
+    // Step 4: Animations & Explosions
+
+    func addAttractorAnimation(to layer: CALayer) {
+        let animation = CAKeyframeAnimation()
+        animation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        animation.duration = 3
+        animation.keyTimes = [0, 0.4]
+        animation.values = [80, 5]
+
+        layer.add(animation, forKey: "emitterBehaviors.attractor.stiffness")
+    }
+
+    func addBirthrateAnimation(to layer: CALayer) {
+        let animation = CABasicAnimation()
+        animation.duration = 1
+        animation.fromValue = 1
+        animation.toValue = 0
+
+        layer.add(animation, forKey: "birthRate")
+    }
+
+    func addAnimations(to layer: CAEmitterLayer) {
+        addAttractorAnimation(to: layer)
+        addBirthrateAnimation(to: layer)
+        addGravityAnimation(to: layer)
+    }
+
+    // Step 5: Air Resistance & Gravity
+
+    func dragBehavior() -> Any {
+        let behavior = createBehavior(type: "drag")
+        behavior.setValue("drag", forKey: "name")
+        behavior.setValue(2, forKey: "drag")
+
+        return behavior
+    }
+
+    func addDragAnimation(to layer: CALayer) {
+        let animation = CABasicAnimation()
+        animation.duration = 0.35
+        animation.fromValue = 0
+        animation.toValue = 2
+
+        layer.add(animation, forKey: "emitterBehaviors.drag.drag")
+    }
+
+    func addGravityAnimation(to layer: CALayer) {
+        let animation = CAKeyframeAnimation()
+        animation.duration = 6
+        animation.keyTimes = [0.05, 0.1, 0.5, 1]
+        animation.values = [0, 100, 2000, 4000]
+
+        for image in confettiTypes {
+            layer.add(animation, forKey: "emitterCells.\(image.name).yAcceleration")
+        }
+    }
+
+    // Step 6: Background & Foreground
+    func createConfettiLayer(in view: UIView) -> CAEmitterLayer {
         let emitterLayer = CAEmitterLayer()
 
         emitterLayer.birthRate = 0
@@ -238,8 +244,17 @@ extension ViewController {
         return emitterLayer
     }
 
+}
+
+// i wanted to conform using ViewController: ConfettiShowable but i had to have an instance initialized in the main file.
+
+extension ViewController {
+    var foregroundConfettiLayer: CAEmitterLayer {
+        createConfettiLayer(in: view)
+    }
+
     var backgroundConfettiLayer: CAEmitterLayer {
-        let emitterLayer = createConfettiLayer()
+        let emitterLayer = createConfettiLayer(in: view)
 
         for emitterCell in emitterLayer.emitterCells ?? [] {
             emitterCell.scale = 0.5
@@ -251,10 +266,28 @@ extension ViewController {
         return emitterLayer
     }
 
+    func generateConfettiTypes() -> [ConfettiType] {
+        let confettiColors = [
+            (r: 149, g: 58, b: 255), (r: 255, g: 195, b: 41), (r: 255, g: 101, b: 26),
+            (r: 123, g: 92, b: 255), (r: 76, g: 126, b: 255), (r: 71, g: 192, b: 255),
+            (r: 255, g: 47, b: 39), (r: 255, g: 91, b: 134), (r: 233, g: 122, b: 208)
+        ].map { UIColor(red: $0.r / 255.0, green: $0.g / 255.0, blue: $0.b / 255.0, alpha: 1) }
+
+        // For each position x shape x color, construct an image
+        return [ConfettiPosition.foreground, ConfettiPosition.background].flatMap { position in
+            return [ConfettiShape.rectangle, ConfettiShape.circle].flatMap { shape in
+                return confettiColors.map { color in
+                    return ConfettiType(color: color, shape: shape, position: position)
+                }
+            }
+        }
+    }
+
+
 // And finally...
 
-    func displayConfetti() {
-        for layer in [createConfettiLayer(), backgroundConfettiLayer] {
+    @objc func displayConfetti() {
+        for layer in [foregroundConfettiLayer, backgroundConfettiLayer] {
             view.layer.addSublayer(layer)
             addBehaviors(to: layer)
             addAnimations(to: layer)

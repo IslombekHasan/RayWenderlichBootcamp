@@ -15,7 +15,7 @@ enum ButtonState: String {
     case finish = "Calculate Compatibility"
 }
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ConfettiShowable {
 
     @IBOutlet weak var compatibilityItemLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
@@ -44,6 +44,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         reset()
+
+        // testing confetti
+        // let gr = UITapGestureRecognizer(target: self, action: #selector(displayConfetti))
+        // view.addGestureRecognizer(gr)
     }
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {
@@ -117,6 +121,23 @@ class ViewController: UIViewController {
         let matchString = 100 - (matchPercentage * 100).rounded()
         return matchString
     }
+
+    var confettiTypes: [ConfettiType] = {
+        let confettiColors = [
+            (r: 149, g: 58, b: 255), (r: 255, g: 195, b: 41), (r: 255, g: 101, b: 26),
+            (r: 123, g: 92, b: 255), (r: 76, g: 126, b: 255), (r: 71, g: 192, b: 255),
+            (r: 255, g: 47, b: 39), (r: 255, g: 91, b: 134), (r: 233, g: 122, b: 208)
+        ].map { UIColor(red: $0.r / 255.0, green: $0.g / 255.0, blue: $0.b / 255.0, alpha: 1) }
+
+        // For each position x shape x color, construct an image
+        return [ConfettiPosition.foreground, ConfettiPosition.background].flatMap { position in
+            return [ConfettiShape.rectangle, ConfettiShape.circle].flatMap { shape in
+                return confettiColors.map { color in
+                    return ConfettiType(color: color, shape: shape, position: position)
+                }
+            }
+        }
+    }()
 
 }
 
