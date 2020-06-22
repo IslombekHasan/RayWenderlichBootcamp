@@ -11,8 +11,8 @@ import UIKit
 enum ButtonState: String {
     case start = "Let's start"
     case nextItem = "Next item"
-    case nextPerson = "Switch to Person 2"
-    case finish = "Calculate Compatibility"
+    case nextPerson = "Save and Switch to Person 2"
+    case finish = "Save and Calculate Compatibility"
 }
 
 class ViewController: UIViewController, ConfettiShowable {
@@ -22,6 +22,8 @@ class ViewController: UIViewController, ConfettiShowable {
     @IBOutlet weak var questionLabel: UILabel!
     @IBOutlet weak var actionButton: UIButton!
 
+    
+    
     var compatibilityItems = ["Cats 😺", "Dogs 🐶", "Space 🌌", "Large Hadron Collider ⚛", "RW :]"] // Add more!
     var currentItemIndex: Int = 0 {
         didSet {
