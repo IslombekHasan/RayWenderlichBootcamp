@@ -55,21 +55,21 @@ class ViewController: UIViewController, ConfettiShowable {
     }
 
     @IBAction func didPressActionButton(_ sender: UIButton) {
-
-        if sender.title(for: .normal) != ButtonState.start.rawValue {
-            recordResult()
-        }
-
         switch sender.title(for: .normal) {
         case ButtonState.start.rawValue:
             questionLabel.isHidden = false
             slider.isHidden = false
             setCurrentPerson(to: person1)
 
+        case ButtonState.nextItem.rawValue:
+            recordResult()
+            
         case ButtonState.nextPerson.rawValue:
+            recordResult()
             setCurrentPerson(to: person2)
 
         case ButtonState.finish.rawValue:
+            recordResult()
             finishComparison()
 
         default:
@@ -81,6 +81,7 @@ class ViewController: UIViewController, ConfettiShowable {
         currentPerson = nil
         questionLabel.isHidden = true
         slider.isHidden = true
+        slider.value = 2.5
         setButtonTitle(to: .start)
         person1.items = [:]
         person2.items = [:]
