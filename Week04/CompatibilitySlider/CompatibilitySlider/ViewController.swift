@@ -56,7 +56,7 @@ class ViewController: UIViewController {
             questionLabel.isHidden = false
             slider.isHidden = false
             setCurrentPerson(to: person1)
-            
+
         case ButtonState.nextItem.rawValue:
             let currentItem = compatibilityItems[currentItemIndex]
             currentPerson?.items.updateValue(slider.value, forKey: currentItem)
@@ -87,14 +87,18 @@ class ViewController: UIViewController {
     }
 
     func finishComparison() {
-        let alert = UIAlertController(title: "Results", message: "You two are \(calculateCompatibility()) compatible", preferredStyle: .alert)
+        let match = calculateCompatibility()
+        let alert = UIAlertController(title: "Results", message: "You two are \(match)% compatible", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         present(alert, animated: true) {
             self.reset()
         }
+        if match > 85.0 {
+            displayConfetti()
+        }
     }
 
-    func calculateCompatibility() -> String {
+    func calculateCompatibility() -> Double {
         // If diff 0.0 is 100% and 5.0 is 0%, calculate match percentage
         var percentagesForAllItems: [Double] = []
 
@@ -108,7 +112,7 @@ class ViewController: UIViewController {
         let matchPercentage = sumOfAllPercentages / Double(compatibilityItems.count)
         print(matchPercentage, "%")
         let matchString = 100 - (matchPercentage * 100).rounded()
-        return "\(matchString)%"
+        return matchString
     }
 
 }
