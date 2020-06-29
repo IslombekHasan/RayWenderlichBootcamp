@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="v3O-mr-OGz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ffm-Ad-Evw">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--Checklists-->
         <scene sceneID="mry-PB-6nH">
             <objects>
                 <tableViewController id="v3O-mr-OGz" customClass="ChecklistViewController" customModule="RW_Checklist" customModuleProvider="target" sceneMemberID="viewController">
@@ -31,8 +31,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="LxT-T8-CzH" secondAttribute="trailing" constant="20" symbolic="YES" id="6g3-SO-6Uu"/>
-                                        <constraint firstAttribute="bottom" secondItem="LxT-T8-CzH" secondAttribute="bottom" constant="8" id="FrT-4X-2MH"/>
-                                        <constraint firstItem="LxT-T8-CzH" firstAttribute="top" secondItem="N5d-vq-AQ5" secondAttribute="top" constant="8" id="c70-HN-JSt"/>
+                                        <constraint firstAttribute="bottom" secondItem="LxT-T8-CzH" secondAttribute="bottom" priority="750" constant="8" id="FrT-4X-2MH"/>
+                                        <constraint firstItem="LxT-T8-CzH" firstAttribute="top" secondItem="N5d-vq-AQ5" secondAttribute="top" priority="750" constant="8" id="c70-HN-JSt"/>
                                         <constraint firstItem="LxT-T8-CzH" firstAttribute="leading" secondItem="N5d-vq-AQ5" secondAttribute="leading" constant="20" symbolic="YES" id="clR-MU-JM4"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -43,8 +43,33 @@
                             <outlet property="delegate" destination="v3O-mr-OGz" id="FoY-jb-2Cn"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="DEW-fW-kR8">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="wLa-dG-yBS">
+                            <connections>
+                                <action selector="addItem:" destination="v3O-mr-OGz" id="tPv-AH-cr6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KrM-O2-TaS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="931.88405797101461" y="114.50892857142857"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="s8I-Rk-wFG">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ffm-Ad-Evw" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="OX8-dF-M5P">
+                        <rect key="frame" x="0.0" y="44" width="414" height="96"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="v3O-mr-OGz" kind="relationship" relationship="rootViewController" id="lPS-nM-MmN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kgi-B2-YcF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="21.739130434782609" y="114.50892857142857"/>
         </scene>
