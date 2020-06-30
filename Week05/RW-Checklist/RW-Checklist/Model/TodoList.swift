@@ -21,6 +21,22 @@ class TodoList {
         todos.append(ChecklistItem("be awesome"))
     }
 
+    func move(item: ChecklistItem, to index: Int) {
+        guard let currentIndex = todos.firstIndex(of: item) else {
+            return
+        }
+        todos.remove(at: currentIndex)
+        todos.insert(item, at: index)
+    }
+
+    func remove(items: [ChecklistItem]) {
+        for item in items {
+            if let index = todos.firstIndex(of: item) {
+                todos.remove(at: index)
+            }
+        }
+    }
+
     func newTodo() -> ChecklistItem {
         let item = ChecklistItem(names.randomElement()!)
         todos.append(item)
