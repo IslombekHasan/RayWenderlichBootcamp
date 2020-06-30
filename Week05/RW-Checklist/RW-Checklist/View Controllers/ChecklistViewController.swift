@@ -27,7 +27,25 @@ class ChecklistViewController: UITableViewController {
         let indexPath = IndexPath(row: newIndex, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
-    
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "AddItemSegue" {
+            if let itemDetailViewController = segue.destination as? ItemDetailViewController {
+                itemDetailViewController.delegate = self
+                itemDetailViewController.todoList = todoList
+            }
+        } else if segue.identifier == "EditItemSegue" {
+            if let itemDetailViewController = segue.destination as? ItemDetailViewController {
+                if let cell = sender as? UITableViewCell,
+                    let indexPath = tableView.indexPath(for: cell) {
+                    let item = todoList.todos[indexPath.row]
+                    itemDetailViewController.itemToEdit = item
+                    itemDetailViewController.delegate = self
+                }
+            }
+        }
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         todoList.todos.count
     }
@@ -48,7 +66,7 @@ class ChecklistViewController: UITableViewController {
             tableView.deselectRow(at: indexPath, animated: true)
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         todoList.todos.remove(at: indexPath.row)
         let indexPaths = [indexPath]
@@ -62,6 +80,32 @@ class ChecklistViewController: UITableViewController {
     }
 
     func configureCheckmark(cell: UITableViewCell, with item: ChecklistItem) {
-        cell.accessoryType = item.checked ? .checkmark : .none
+        guard let checkmark = cell.viewWithTag(1001) as? UILabel else {
+            return
+        }
+        checkmark.isHidden = !item.checked
+    }
+}
+
+extension ChecklistViewController: ItemDetailViewControllerDelegate {
+    func itemDetailViewControllerDidCancel(_ controller: ItemDetailViewController) {
+        navigationController?.popViewController(animated: true)
+    }
+
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishAdding item: ChecklistItem) {
+        navigationController?.popViewController(animated: true)
+        let rowIndex = todoList.todos.count - 1
+        let indexPath = IndexPath(row: rowIndex, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+
+    func itemDetailViewController(_ controller: ItemDetailViewController, didFinishEditing item: ChecklistItem) {
+        navigationController?.popViewController(animated: true)
+        if let index = todoList.todos.firstIndex(of: item) {
+            let indexPath = IndexPath(row: index, section: 0)
+            if let cell = tableView.cellForRow(at: indexPath) {
+                configureText(cell: cell, with: item)
+            }
+        }
     }
 }

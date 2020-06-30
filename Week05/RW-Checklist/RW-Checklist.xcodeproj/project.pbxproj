@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		340A255F24AA15E8004DEA4C /* ItemDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 340A255E24AA15E8004DEA4C /* ItemDetailViewController.swift */; };
 		343C0E1924A38F4B00FCDD11 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C0E1824A38F4B00FCDD11 /* AppDelegate.swift */; };
 		343C0E1B24A38F4B00FCDD11 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C0E1A24A38F4B00FCDD11 /* SceneDelegate.swift */; };
 		343C0E1D24A38F4B00FCDD11 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343C0E1C24A38F4B00FCDD11 /* ChecklistViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		340A255E24AA15E8004DEA4C /* ItemDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailViewController.swift; sourceTree = "<group>"; };
 		343C0E1524A38F4B00FCDD11 /* RW-Checklist.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RW-Checklist.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		343C0E1824A38F4B00FCDD11 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		343C0E1A24A38F4B00FCDD11 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		340A255D24AA15C5004DEA4C /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				340A255E24AA15E8004DEA4C /* ItemDetailViewController.swift */,
+				343C0E1C24A38F4B00FCDD11 /* ChecklistViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
 		343C0E0C24A38F4B00FCDD11 = {
 			isa = PBXGroup;
 			children = (
@@ -60,10 +71,10 @@
 		343C0E1724A38F4B00FCDD11 /* RW-Checklist */ = {
 			isa = PBXGroup;
 			children = (
+				340A255D24AA15C5004DEA4C /* View Controllers */,
 				3495402B24A9FCD7000C0002 /* Model */,
 				343C0E1824A38F4B00FCDD11 /* AppDelegate.swift */,
 				343C0E1A24A38F4B00FCDD11 /* SceneDelegate.swift */,
-				343C0E1C24A38F4B00FCDD11 /* ChecklistViewController.swift */,
 				343C0E1E24A38F4B00FCDD11 /* Main.storyboard */,
 				343C0E2124A38F4D00FCDD11 /* Assets.xcassets */,
 				343C0E2324A38F4D00FCDD11 /* LaunchScreen.storyboard */,
@@ -154,6 +165,7 @@
 			files = (
 				343C0E1D24A38F4B00FCDD11 /* ChecklistViewController.swift in Sources */,
 				3495402F24AA0382000C0002 /* TodoList.swift in Sources */,
+				340A255F24AA15E8004DEA4C /* ItemDetailViewController.swift in Sources */,
 				343C0E1924A38F4B00FCDD11 /* AppDelegate.swift in Sources */,
 				343C0E1B24A38F4B00FCDD11 /* SceneDelegate.swift in Sources */,
 				3495402D24A9FCE3000C0002 /* ChecklistItem.swift in Sources */,
