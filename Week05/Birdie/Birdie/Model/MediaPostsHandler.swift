@@ -33,5 +33,4 @@ class MediaPostsHandler: NSObject {
         mediaPosts.append(imagePost)
         mediaPosts = mediaPosts.sorted(by: { $0.timestamp > $1.timestamp })
     }
-
 }

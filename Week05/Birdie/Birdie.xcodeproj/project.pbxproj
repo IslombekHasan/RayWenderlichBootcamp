@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34B2C28B24ACAD8100C21CC8 /* TextPostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B2C28924ACAD8100C21CC8 /* TextPostCell.swift */; };
+		34B2C28C24ACAD8100C21CC8 /* TextPostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34B2C28A24ACAD8100C21CC8 /* TextPostCell.xib */; };
+		34B2C28F24ACAD9400C21CC8 /* ImagePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B2C28D24ACAD9400C21CC8 /* ImagePostCell.swift */; };
+		34B2C29024ACAD9400C21CC8 /* ImagePostCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34B2C28E24ACAD9400C21CC8 /* ImagePostCell.xib */; };
+		34B2C29224ACB4CD00C21CC8 /* MediaPostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B2C29124ACB4CD00C21CC8 /* MediaPostsViewModel.swift */; };
 		C3C9D35E249B324B001F55A6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D35D249B324B001F55A6 /* AppDelegate.swift */; };
 		C3C9D360249B324B001F55A6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D35F249B324B001F55A6 /* SceneDelegate.swift */; };
 		C3C9D362249B324B001F55A6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3C9D361249B324B001F55A6 /* ViewController.swift */; };
@@ -40,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		34B2C28924ACAD8100C21CC8 /* TextPostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPostCell.swift; sourceTree = "<group>"; };
+		34B2C28A24ACAD8100C21CC8 /* TextPostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TextPostCell.xib; sourceTree = "<group>"; };
+		34B2C28D24ACAD9400C21CC8 /* ImagePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePostCell.swift; sourceTree = "<group>"; };
+		34B2C28E24ACAD9400C21CC8 /* ImagePostCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImagePostCell.xib; sourceTree = "<group>"; };
+		34B2C29124ACB4CD00C21CC8 /* MediaPostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaPostsViewModel.swift; sourceTree = "<group>"; };
 		C3C9D35A249B324B001F55A6 /* Birdie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Birdie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3C9D35D249B324B001F55A6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3C9D35F249B324B001F55A6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +163,10 @@
 			children = (
 				C3C9D363249B324B001F55A6 /* Main.storyboard */,
 				C3C9D36B249B324C001F55A6 /* LaunchScreen.storyboard */,
+				34B2C28924ACAD8100C21CC8 /* TextPostCell.swift */,
+				34B2C28A24ACAD8100C21CC8 /* TextPostCell.xib */,
+				34B2C28D24ACAD9400C21CC8 /* ImagePostCell.swift */,
+				34B2C28E24ACAD9400C21CC8 /* ImagePostCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -179,6 +193,7 @@
 		C3C9D39E249B3C30001F55A6 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				34B2C29124ACB4CD00C21CC8 /* MediaPostsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -287,7 +302,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34B2C28C24ACAD8100C21CC8 /* TextPostCell.xib in Resources */,
 				C3C9D36D249B324C001F55A6 /* LaunchScreen.storyboard in Resources */,
+				34B2C29024ACAD9400C21CC8 /* ImagePostCell.xib in Resources */,
 				C3C9D36A249B324C001F55A6 /* Assets.xcassets in Resources */,
 				C3C9D365249B324B001F55A6 /* Main.storyboard in Resources */,
 			);
@@ -319,9 +336,12 @@
 				C3C9D362249B324B001F55A6 /* ViewController.swift in Sources */,
 				C3C9D397249B346E001F55A6 /* MediaPostProtocol.swift in Sources */,
 				C3C9D39B249B3711001F55A6 /* MediaPostsHandler.swift in Sources */,
+				34B2C28F24ACAD9400C21CC8 /* ImagePostCell.swift in Sources */,
 				C3C9D368249B324B001F55A6 /* Birdie_Final.xcdatamodeld in Sources */,
 				C3C9D35E249B324B001F55A6 /* AppDelegate.swift in Sources */,
 				C3C9D360249B324B001F55A6 /* SceneDelegate.swift in Sources */,
+				34B2C28B24ACAD8100C21CC8 /* TextPostCell.swift in Sources */,
+				34B2C29224ACB4CD00C21CC8 /* MediaPostsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
