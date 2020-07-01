@@ -31,9 +31,36 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didPressCreateTextPostButton(_ sender: Any) {
+        let alert = UIAlertController(title: "Chirp chirp", message: "Share your thoughts with the world", preferredStyle: .alert)
+        alert.addTextField { (textField) in
+            textField.placeholder = "Username"
+        }
+        alert.addTextField { (textField) in
+            textField.placeholder = "Write a text"
+        }
+
+        let action = UIAlertAction(title: "Post", style: .default) { (action) in
+            if let username = alert.textFields?[0].text, !username.isEmpty {
+                let body = alert.textFields?[1].text
+                let post = TextPost(textBody: body, userName: username, timestamp: Date())
+                MediaPostsHandler.shared.addTextPost(textPost: post)
+                self.tableview.reloadData()
+            } else {
+                self.displayPostError("You must provide a username")
+            }
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 
     @IBAction func didPressCreateImagePostButton(_ sender: Any) {
+    }
+
+    func displayPostError(_ message: String = "") {
+        let alert = UIAlertController(title: "Oops", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Okay", style: .default)
+        alert.addAction(action)
+        present(alert, animated: true)
     }
 
 }
@@ -51,5 +78,5 @@ extension ViewController: UITableViewDataSource {
 }
 
 extension ViewController: UITableViewDelegate {
-    
+
 }
