@@ -14,11 +14,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpTableView()
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
         MediaPostsHandler.shared.getPosts()
+        setUpTableView()
     }
 
     func setUpTableView() {
