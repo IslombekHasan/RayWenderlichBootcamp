@@ -31,29 +31,45 @@ class ViewController: UIViewController {
     }
 
     @IBAction func didPressCreateTextPostButton(_ sender: Any) {
-        let alert = UIAlertController(title: "Chirp chirp", message: "Share your thoughts with the world", preferredStyle: .alert)
+        writePost(with: nil)
+    }
+
+    @IBAction func didPressCreateImagePostButton(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.allowsEditing = false
+        picker.sourceType = .photoLibrary
+        picker.modalPresentationStyle = .fullScreen
+        present(picker, animated: true)
+    }
+
+    func writePost(with image: UIImage?) {
+        let alert = UIAlertController(title: "Chirp chirp", message: "Share your thoughts with the world :]", preferredStyle: .alert)
         alert.addTextField { (textField) in
             textField.placeholder = "Username"
         }
         alert.addTextField { (textField) in
-            textField.placeholder = "Write a text"
+            textField.placeholder = "Put your thoughts here"
         }
 
         let action = UIAlertAction(title: "Post", style: .default) { (action) in
             if let username = alert.textFields?[0].text, !username.isEmpty {
                 let body = alert.textFields?[1].text
-                let post = TextPost(textBody: body, userName: username, timestamp: Date())
-                MediaPostsHandler.shared.addTextPost(textPost: post)
+                var post: MediaPost
+                if let image = image {
+                    post = ImagePost(textBody: body, userName: username, timestamp: Date(), image: image)
+                } else {
+                    post = TextPost(textBody: body, userName: username, timestamp: Date())
+                }
+                MediaPostsHandler.shared.addPost(post: post)
                 self.tableview.reloadData()
             } else {
                 self.displayPostError("You must provide a username")
             }
         }
+
         alert.addAction(action)
         present(alert, animated: true)
-    }
-
-    @IBAction func didPressCreateImagePostButton(_ sender: Any) {
     }
 
     func displayPostError(_ message: String = "") {
@@ -79,4 +95,14 @@ extension ViewController: UITableViewDataSource {
 
 extension ViewController: UITableViewDelegate {
 
+}
+
+extension ViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            dismiss(animated: true) {
+                self.writePost(with: image)
+            }
+        }
+    }
 }

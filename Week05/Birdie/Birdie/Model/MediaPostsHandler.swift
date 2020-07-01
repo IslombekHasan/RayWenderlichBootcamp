@@ -12,7 +12,7 @@ class MediaPostsHandler: NSObject {
     static let shared = MediaPostsHandler()
     var mediaPosts: [MediaPost] = []
 
-    private override init() {}
+    private override init() { }
 
     func getPosts() {
         let imagePost1 = ImagePost(textBody: "I love debugging software!", userName: "Jay", timestamp: Date(timeIntervalSince1970: 10000), image: UIImage(named: "chop")!)
@@ -32,5 +32,13 @@ class MediaPostsHandler: NSObject {
     func addImagePost(imagePost: ImagePost) {
         mediaPosts.append(imagePost)
         mediaPosts = mediaPosts.sorted(by: { $0.timestamp > $1.timestamp })
+    }
+
+    func addPost(post: MediaPost) {
+        if let post = post as? TextPost {
+            addTextPost(textPost: post)
+        } else if let post = post as? ImagePost {
+            addImagePost(imagePost: post)
+        }
     }
 }
