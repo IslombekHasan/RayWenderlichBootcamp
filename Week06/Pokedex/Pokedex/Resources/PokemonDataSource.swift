@@ -32,17 +32,32 @@
 
 import UIKit
 
-class CompactPokemonCell: UICollectionViewCell {
+class PokemonDataSource: NSObject, UICollectionViewDataSource {
 
-  static let reuseIdentifier = String(describing: CompactPokemonCell.self)
+  let pokemons = PokemonGenerator.shared.generatePokemons()
 
-  @IBOutlet weak var pokemonImageView: UIImageView!
-  @IBOutlet weak var nameLabel: UILabel!
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-    self.layer.cornerRadius = 8
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return pokemons.count
   }
+
+  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    let pokemon = pokemons[indexPath.item]
+    if let compactCell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactPokemonCell.reuseIdentifier, for: indexPath) as? CompactPokemonCell {
+      compactCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
+      compactCell.nameLabel.text = pokemon.pokemonName
+      return compactCell
+    } else if let largeCell = collectionView.dequeueReusableCell(withReuseIdentifier: LargePokemonCell.reuseIdentifier, for: indexPath) as? LargePokemonCell {
+      largeCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
+      largeCell.nameLabel.text = pokemon.pokemonName
+      largeCell.baseExpLabel.text = "\(pokemon.baseExp)"
+      largeCell.heightLabel.text = "\(pokemon.height)"
+      largeCell.weightLabel.text = "\(pokemon.weight)"
+      return largeCell
+    } else {
+      fatalError("Can't create cell")
+    }
+
+  }
+
 
 }

@@ -32,17 +32,10 @@
 
 import UIKit
 
-class CompactPokemonCell: UICollectionViewCell {
+class LargeViewController: UIViewController {
 
-  static let reuseIdentifier = String(describing: CompactPokemonCell.self)
-
-  @IBOutlet weak var pokemonImageView: UIImageView!
-  @IBOutlet weak var nameLabel: UILabel!
-
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-    self.layer.cornerRadius = 8
+  override func viewDidLoad() {
+    super.viewDidLoad()
   }
 
 }

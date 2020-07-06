@@ -32,17 +32,45 @@
 
 import UIKit
 
-class CompactPokemonCell: UICollectionViewCell {
+class CompactViewController: UIViewController {
 
-  static let reuseIdentifier = String(describing: CompactPokemonCell.self)
+  @IBOutlet weak var collectionView: UICollectionView!
+  var dataSource = PokemonDataSource()
 
-  @IBOutlet weak var pokemonImageView: UIImageView!
-  @IBOutlet weak var nameLabel: UILabel!
+  let numberOfItemPerRow = 3
+  let interItemSpacing = 8
+  let sideEdgeInsets: CGFloat = 12
+  let topBottomEdgeInsets: CGFloat = 8
 
-  override func awakeFromNib() {
-    super.awakeFromNib()
-    
-    self.layer.cornerRadius = 8
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    collectionView.register(UINib(nibName: "CompactPokemonCell", bundle: nil), forCellWithReuseIdentifier: CompactPokemonCell.reuseIdentifier)
+    collectionView.dataSource = dataSource
+    collectionView.delegate = self
+  }
+
+}
+
+extension CompactViewController: UICollectionViewDelegateFlowLayout {
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    let fullWidth = UIScreen.main.bounds.width - sideEdgeInsets * 2
+    let totalSpacing = numberOfItemPerRow * interItemSpacing
+
+    let itemWidth = (Int(fullWidth) - totalSpacing) / numberOfItemPerRow
+    return CGSize(width: itemWidth, height: itemWidth)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+    return CGFloat(interItemSpacing)
+  }
+
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    collectionView.collectionViewLayout.invalidateLayout()
+  }
+
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+    return UIEdgeInsets(top: topBottomEdgeInsets, left: sideEdgeInsets, bottom: topBottomEdgeInsets, right: sideEdgeInsets)
   }
 
 }
