@@ -51,6 +51,10 @@ class CompactViewController: UIViewController {
     collectionView.dataSource = dataSource
     collectionView.delegate = self
   }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    collectionView.collectionViewLayout.invalidateLayout()
+  }
 
 }
 
@@ -74,10 +78,6 @@ extension CompactViewController: UICollectionViewDelegateFlowLayout {
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
     return CGFloat(interItemSpacing)
-  }
-
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    collectionView.collectionViewLayout.invalidateLayout()
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {

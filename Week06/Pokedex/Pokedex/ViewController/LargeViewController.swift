@@ -45,11 +45,15 @@ class LargeViewController: UIViewController {
     collectionView.delegate = self
   }
 
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    collectionView.collectionViewLayout.invalidateLayout()
+  }
+
 }
 
 extension LargeViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: UIScreen.main.bounds.width * (3 / 4), height: UIScreen.main.bounds.height * 2/3)
+    return CGSize(width: UIScreen.main.bounds.width * (3 / 4), height: UIScreen.main.bounds.height * 2 / 3)
   }
 
 }
