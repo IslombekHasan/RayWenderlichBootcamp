@@ -86,21 +86,24 @@ extension PokemonDataSource: UICollectionViewDataSource {
       return collectionView.dequeueReusableCell(withReuseIdentifier: EmptyFavoritesCell.reuseIdentifier, for: indexPath)
     }
 
-    let pokemon = indexPath.section == 0 ? favorites[indexPath.item] : pokemons[indexPath.item]
-    if let compactCell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactPokemonCell.reuseIdentifier, for: indexPath) as? CompactPokemonCell {
-      compactCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
-      compactCell.nameLabel.text = pokemon.pokemonName
-      return compactCell
-    } else if let largeCell = collectionView.dequeueReusableCell(withReuseIdentifier: LargePokemonCell.reuseIdentifier, for: indexPath) as? LargePokemonCell {
-      largeCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
-      largeCell.nameLabel.text = pokemon.pokemonName
-      largeCell.baseExpLabel.text = "\(pokemon.baseExp)"
-      largeCell.heightLabel.text = "\(pokemon.height)"
-      largeCell.weightLabel.text = "\(pokemon.weight)"
-      return largeCell
+    let pokemon = isFavoritesSection(indexPath.section) ? favorites[indexPath.item] : pokemons[indexPath.item]
+    if viewMode == .compact {
+      if let compactCell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactPokemonCell.reuseIdentifier, for: indexPath) as? CompactPokemonCell {
+        compactCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
+        compactCell.nameLabel.text = pokemon.pokemonName
+        return compactCell
+      }
     } else {
-      fatalError("Can't create a cell")
+      if let largeCell = collectionView.dequeueReusableCell(withReuseIdentifier: LargePokemonCell.reuseIdentifier, for: indexPath) as? LargePokemonCell {
+        largeCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
+        largeCell.nameLabel.text = pokemon.pokemonName
+        largeCell.baseExpLabel.text = "\(pokemon.baseExp)"
+        largeCell.heightLabel.text = "\(pokemon.height)"
+        largeCell.weightLabel.text = "\(pokemon.weight)"
+        return largeCell
+      }
     }
+    fatalError()
   }
 
   func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

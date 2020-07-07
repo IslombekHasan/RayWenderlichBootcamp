@@ -44,7 +44,7 @@ class LargePokemonCell: UICollectionViewCell {
 
   override func awakeFromNib() {
     super.awakeFromNib()
-    // Initialization code
+    self.layer.cornerRadius = 12
   }
 
 }

@@ -33,9 +33,23 @@
 import UIKit
 
 class LargeViewController: UIViewController {
+  @IBOutlet weak var collectionView: UICollectionView!
+  let dataSource = PokemonDataSource(for: .large)
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    collectionView.register(UINib(nibName: "LargePokemonCell", bundle: nil), forCellWithReuseIdentifier: LargePokemonCell.reuseIdentifier)
+
+    collectionView.dataSource = dataSource
+    collectionView.delegate = self
+  }
+
+}
+
+extension LargeViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    return CGSize(width: UIScreen.main.bounds.width * (3 / 4), height: UIScreen.main.bounds.height * 2/3)
   }
 
 }
