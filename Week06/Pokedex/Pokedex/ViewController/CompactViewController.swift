@@ -37,13 +37,16 @@ class CompactViewController: UIViewController {
   @IBOutlet weak var collectionView: UICollectionView!
   var dataSource = PokemonDataSource()
 
+  var favorites: [Pokemon] = []
+
   let numberOfItemPerRow = 3
   let interItemSpacing = 8
-  let sideEdgeInsets: CGFloat = 12
-  let topBottomEdgeInsets: CGFloat = 8
+  let horizontalPadding: CGFloat = 12
+  let verticalPadding: CGFloat = 8
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    collectionView.register(UINib(nibName: "EmptyFavoritesCell", bundle: nil), forCellWithReuseIdentifier: EmptyFavoritesCell.reuseIdentifier)
     collectionView.register(UINib(nibName: "CompactPokemonCell", bundle: nil), forCellWithReuseIdentifier: CompactPokemonCell.reuseIdentifier)
     collectionView.dataSource = dataSource
     collectionView.delegate = self
@@ -53,9 +56,17 @@ class CompactViewController: UIViewController {
 
 extension CompactViewController: UICollectionViewDelegateFlowLayout {
 
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+    CGSize(width: UIScreen.main.bounds.width, height: 50)
+  }
+
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let fullWidth = UIScreen.main.bounds.width - sideEdgeInsets * 2
+    let fullWidth = UIScreen.main.bounds.width - horizontalPadding * 2
     let totalSpacing = numberOfItemPerRow * interItemSpacing
+
+    if dataSource.isFavoritesSection(indexPath.section) && dataSource.favorites.isEmpty {
+      return CGSize(width: fullWidth, height: fullWidth / 3)
+    }
 
     let itemWidth = (Int(fullWidth) - totalSpacing) / numberOfItemPerRow
     return CGSize(width: itemWidth, height: itemWidth)
@@ -70,7 +81,51 @@ extension CompactViewController: UICollectionViewDelegateFlowLayout {
   }
 
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: topBottomEdgeInsets, left: sideEdgeInsets, bottom: topBottomEdgeInsets, right: sideEdgeInsets)
+    return UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
+  }
+
+  // In Hindsight, this does not work like i wanted it to. I shouldve used CompositionalLayout to make the My Pokemons part scroll horizontally.
+  // Will do that after i do the second part.
+  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+
+    if indexPath.section == 0 && dataSource.favorites.isEmpty {
+      return nil
+    }
+
+    var menuItems: [UIAction] = []
+
+    let selectedPokemon = indexPath.section == 0 ? self.dataSource.favorites[indexPath.item] : self.dataSource.pokemons[indexPath.item]
+
+    if let favPokemonIndex = dataSource.favorites.firstIndex(where: { (favPokemon) -> Bool in
+      favPokemon.pokemonID == selectedPokemon.pokemonID
+    }) {
+      let removeMenu = UIAction(title: "Remove from favorites",
+                                image: UIImage(systemName: "heart.slash")) { _ in
+        self.dataSource.removeFromFavorites(at: favPokemonIndex)
+        let indexPath = IndexPath(item: favPokemonIndex, section: 0)
+        collectionView.deleteItems(at: [indexPath])
+      }
+      menuItems.append(removeMenu)
+
+    } else {
+      let addMenu = UIAction(title: "That's my favorite!",
+                             image: UIImage(systemName: "heart.fill")) { _ in
+
+        self.dataSource.addToFavorites(pokemon: selectedPokemon)
+        if (self.dataSource.favorites.isEmpty) {
+          collectionView.reloadData()
+        } else {
+          let indexPath = IndexPath(item: self.dataSource.favorites.count - 1, section: 0)
+          collectionView.insertItems(at: [indexPath])
+        }
+      }
+      menuItems.append(addMenu)
+    }
+
+    return UIContextMenuConfiguration(identifier: nil,
+                                      previewProvider: nil) { _ in
+      UIMenu(title: "", children: menuItems)
+    }
   }
 
 }

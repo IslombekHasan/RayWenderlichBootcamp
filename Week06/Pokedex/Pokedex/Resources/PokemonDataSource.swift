@@ -32,16 +32,61 @@
 
 import UIKit
 
-class PokemonDataSource: NSObject, UICollectionViewDataSource {
+enum ViewMode {
+  case compact
+  case large
+}
 
+class PokemonDataSource: NSObject {
+
+  var viewMode: ViewMode
   let pokemons = PokemonGenerator.shared.generatePokemons()
+  var favorites: [Pokemon] = []
+
+  override init() {
+    viewMode = .compact
+    super.init()
+  }
+
+  convenience init(for view: ViewMode) {
+    self.init()
+    viewMode = view
+  }
+
+  func addToFavorites(pokemon: Pokemon) {
+    favorites.append(pokemon)
+  }
+
+  func removeFromFavorites(at index: Int) {
+    favorites.remove(at: index)
+  }
+
+  func isFavoritesSection(_ section: Int) -> Bool {
+    return viewMode == .compact && section == 0 ? true : false
+  }
+
+}
+
+extension PokemonDataSource: UICollectionViewDataSource {
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    return viewMode == .compact ? 2 : 1
+  }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    if isFavoritesSection(section) {
+      return favorites.isEmpty ? 1 : favorites.count
+    }
+
     return pokemons.count
   }
 
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    let pokemon = pokemons[indexPath.item]
+    if isFavoritesSection(indexPath.section) && favorites.isEmpty {
+      return collectionView.dequeueReusableCell(withReuseIdentifier: EmptyFavoritesCell.reuseIdentifier, for: indexPath)
+    }
+
+    let pokemon = indexPath.section == 0 ? favorites[indexPath.item] : pokemons[indexPath.item]
     if let compactCell = collectionView.dequeueReusableCell(withReuseIdentifier: CompactPokemonCell.reuseIdentifier, for: indexPath) as? CompactPokemonCell {
       compactCell.pokemonImageView.image = UIImage(named: "\(pokemon.pokemonID)")
       compactCell.nameLabel.text = pokemon.pokemonName
@@ -54,10 +99,16 @@ class PokemonDataSource: NSObject, UICollectionViewDataSource {
       largeCell.weightLabel.text = "\(pokemon.weight)"
       return largeCell
     } else {
-      fatalError("Can't create cell")
+      fatalError("Can't create a cell")
     }
-
   }
 
+  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    guard let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "Header", for: indexPath) as? HeaderView else {
+      fatalError()
+    }
+    headerView.headerLabel.text = indexPath.section == 0 ? "My pokemons" : "All Pokemons"
+    return headerView
+  }
 
 }
