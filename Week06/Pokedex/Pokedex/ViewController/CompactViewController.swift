@@ -51,7 +51,7 @@ class CompactViewController: UIViewController {
     collectionView.dataSource = dataSource
     collectionView.delegate = self
   }
-  
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     collectionView.collectionViewLayout.invalidateLayout()
   }
@@ -84,48 +84,80 @@ extension CompactViewController: UICollectionViewDelegateFlowLayout {
     return UIEdgeInsets(top: verticalPadding, left: horizontalPadding, bottom: verticalPadding, right: horizontalPadding)
   }
 
-  // In Hindsight, this does not work like i wanted it to. I shouldve used CompositionalLayout to make the My Pokemons part scroll horizontally.
+}
+
+extension CompactViewController {
+  // I shouldve used CompositionalLayout to make the My Pokemons part scroll horizontally.
   // Will do that after i do the second part.
   func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
 
+    // if this is a "No pokemons" cell, do nothing
     if indexPath.section == 0 && dataSource.favorites.isEmpty {
       return nil
     }
 
+    let selectedPokemon = indexPath.section == 0
+      ? self.dataSource.favorites[indexPath.item]
+      : self.dataSource.pokemons[indexPath.item]
+
+    let identifier = "\(indexPath)" as NSString
+
+    return UIContextMenuConfiguration(identifier: identifier,
+                                      previewProvider: nil) { _ in
+      self.makeCompactCellMenu(for: selectedPokemon)
+    }
+  }
+
+  func makeCompactCellMenu(for pokemon: Pokemon, with title: String = "") -> UIMenu {
     var menuItems: [UIAction] = []
 
-    let selectedPokemon = indexPath.section == 0 ? self.dataSource.favorites[indexPath.item] : self.dataSource.pokemons[indexPath.item]
-
     if let favPokemonIndex = dataSource.favorites.firstIndex(where: { (favPokemon) -> Bool in
-      favPokemon.pokemonID == selectedPokemon.pokemonID
+      favPokemon.pokemonID == pokemon.pokemonID
     }) {
+
       let removeMenu = UIAction(title: "Remove from favorites",
                                 image: UIImage(systemName: "heart.slash")) { _ in
-        self.dataSource.removeFromFavorites(at: favPokemonIndex)
-        let indexPath = IndexPath(item: favPokemonIndex, section: 0)
-        collectionView.deleteItems(at: [indexPath])
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.45) {
+          /* the above line is a workaround for the bug that apple gave us with simultaneous contextmenu and collectionviewitem deletion animations */
+          self.deletePokemon(at: favPokemonIndex)
+        }
       }
-      menuItems.append(removeMenu)
 
+      menuItems.append(removeMenu)
     } else {
       let addMenu = UIAction(title: "That's my favorite!",
                              image: UIImage(systemName: "heart.fill")) { _ in
-
-        self.dataSource.addToFavorites(pokemon: selectedPokemon)
-        if (self.dataSource.favorites.isEmpty) {
-          collectionView.reloadData()
-        } else {
-          let indexPath = IndexPath(item: self.dataSource.favorites.count - 1, section: 0)
-          collectionView.insertItems(at: [indexPath])
-        }
+        self.addPokemon(pokemon)
       }
       menuItems.append(addMenu)
     }
 
-    return UIContextMenuConfiguration(identifier: nil,
-                                      previewProvider: nil) { _ in
-      UIMenu(title: "", children: menuItems)
-    }
+    return UIMenu(title: title, children: menuItems)
   }
 
+  func deletePokemon(at dataSourceIndex: Int) {
+    collectionView.performBatchUpdates({
+      self.dataSource.removeFromFavorites(at: dataSourceIndex)
+
+
+      if self.dataSource.favorites.isEmpty {
+        self.collectionView.reloadSections(IndexSet(integer: 0))
+      } else {
+        let indexPath = IndexPath(item: dataSourceIndex, section: 0)
+        self.collectionView.deleteItems(at: [indexPath])
+      }
+    })
+  }
+
+  func addPokemon(_ pokemon: Pokemon) {
+    let isFavoritesEmpty = self.dataSource.favorites.isEmpty
+    self.dataSource.addToFavorites(pokemon: pokemon)
+    if isFavoritesEmpty {
+      self.collectionView.reloadSections(IndexSet(integer: 0))
+    } else {
+      let indexPath = IndexPath(item: self.dataSource.favorites.count - 1, section: 0)
+      self.collectionView.insertItems(at: [indexPath])
+    }
+  }
 }
+
