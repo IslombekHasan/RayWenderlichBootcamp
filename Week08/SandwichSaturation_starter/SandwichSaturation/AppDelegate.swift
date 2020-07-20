@@ -7,9 +7,27 @@
 //
 
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+
+  lazy var persistentStore: NSPersistentContainer = {
+    let container = NSPersistentContainer(name: "Sandwiches")
+    container.loadPersistentStores { (storeDesc, error) in
+      if let error = error {
+        fatalError("Couldn't load Core Data")
+      }
+    }
+    return container
+  }()
+
+  func saveContext() {
+    let context = persistentStore.viewContext
+    guard context.hasChanges else { return }
+    do { try context.save() }
+    catch let error { print("Couldn't save due to \(error)") }
+  }
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
