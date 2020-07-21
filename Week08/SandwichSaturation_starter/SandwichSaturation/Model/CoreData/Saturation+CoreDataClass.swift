@@ -13,4 +13,14 @@ import CoreData
 
 public class Saturation: NSManagedObject {
 
+  var sauceAmount: SauceAmount {
+    get {
+      guard let saturationLevel = SauceAmount(rawValue: level) else { return .none }
+      return saturationLevel
+    }
+    set {
+      self.level = newValue.rawValue
+    }
+  }
+
 }

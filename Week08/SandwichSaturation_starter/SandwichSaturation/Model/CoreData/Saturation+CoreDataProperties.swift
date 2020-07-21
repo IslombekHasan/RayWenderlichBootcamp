@@ -17,7 +17,7 @@ extension Saturation {
         return NSFetchRequest<Saturation>(entityName: "Saturation")
     }
 
-    @NSManaged public var level: String?
+    @NSManaged public var level: String
     @NSManaged public var sandwich: Sandwich?
 
 }

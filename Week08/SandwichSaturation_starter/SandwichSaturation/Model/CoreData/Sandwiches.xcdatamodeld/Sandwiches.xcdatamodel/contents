@@ -10,7 +10,7 @@
         <relationship name="sandwich" maxCount="1" deletionRule="Nullify" destinationEntity="Sandwich" inverseName="saturation" inverseEntity="Sandwich"/>
     </entity>
     <elements>
-        <element name="Sandwich" positionX="-36" positionY="9" width="128" height="88"/>
+        <element name="Sandwich" positionX="-204.796875" positionY="30.61328125" width="128" height="88"/>
         <element name="Saturation" positionX="0" positionY="45" width="128" height="73"/>
     </elements>
 </model>

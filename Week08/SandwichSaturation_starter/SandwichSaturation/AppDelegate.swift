@@ -12,7 +12,7 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  lazy var persistentStore: NSPersistentContainer = {
+  lazy var persistentContainer: NSPersistentContainer = {
     let container = NSPersistentContainer(name: "Sandwiches")
     container.loadPersistentStores { (storeDesc, error) in
       if let error = error {
@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }()
 
   func saveContext() {
-    let context = persistentStore.viewContext
+    let context = persistentContainer.viewContext
     guard context.hasChanges else { return }
     do { try context.save() }
     catch let error { print("Couldn't save due to \(error)") }
