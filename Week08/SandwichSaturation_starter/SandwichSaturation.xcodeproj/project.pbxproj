@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1255797724AFB8FA004C616F /* SandwichSaturation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SandwichSaturation.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1255797724AFB8FA004C616F /* Sandwiches.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sandwiches.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1255797A24AFB8FA004C616F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1255797C24AFB8FA004C616F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		1255797E24AFB8FA004C616F /* SandwichViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SandwichViewController.swift; sourceTree = "<group>"; };
@@ -70,7 +70,7 @@
 		1255797824AFB8FA004C616F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1255797724AFB8FA004C616F /* SandwichSaturation.app */,
+				1255797724AFB8FA004C616F /* Sandwiches.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -148,7 +148,7 @@
 			);
 			name = SandwichSaturation;
 			productName = SandwichSaturation;
-			productReference = 1255797724AFB8FA004C616F /* SandwichSaturation.app */;
+			productReference = 1255797724AFB8FA004C616F /* Sandwiches.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -366,7 +366,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefframes.SandwichSaturation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sandwiches;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -384,7 +384,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jefframes.SandwichSaturation;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = Sandwiches;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
