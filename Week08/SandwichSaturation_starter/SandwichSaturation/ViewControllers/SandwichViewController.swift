@@ -78,7 +78,7 @@ extension SandwichViewController: SandwichDataSource {
 //          default:
 //            saucePredicate = anySaucinessPredicate
 //          }
-    
+
     if !isSearchBarEmpty {
       let searchPredicate = NSPredicate(format: "name CONTAINS[cd] %@", query)
       predicates.append(searchPredicate)
@@ -166,6 +166,24 @@ extension SandwichViewController {
 
     return cell
   }
+
+  override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    let sandwich = fetchedRC.object(at: indexPath)
+
+    return UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ in
+
+      let deleteAction = UIAction(title: "Delete", image: UIImage(systemName: "trash"), attributes: .destructive) { _ in
+        self.context.delete(sandwich)
+        self.appDelegate.saveContext()
+        self.loadSandwiches()
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5) {
+          tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+      }
+
+      return UIMenu(title: "", children: [deleteAction])
+    }
+  }
 }
 
 // MARK: - Search and Filter Controllers
@@ -217,7 +235,7 @@ extension SandwichViewController {
   func getSearchScopeIndex() -> Int {
     UserDefaults.standard.integer(forKey: searchScopeKey)
   }
-  
+
   func isFirstLaunch() -> Bool {
     if !UserDefaults.standard.bool(forKey: "isFirstLaunch") {
       UserDefaults.standard.set(true, forKey: "isFirstLaunch")
