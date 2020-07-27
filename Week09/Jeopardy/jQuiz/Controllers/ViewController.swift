@@ -14,8 +14,15 @@ class ViewController: UIViewController {
     @IBOutlet weak var soundButton: UIButton!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var clueLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var scoreLabel: UILabel!
+    
+    @IBOutlet weak var tableView: UITableView! {
+        didSet {
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.separatorStyle = .none
+        }
+    }
 
     var clues: [Clue] = []
     var correctAnswerClue: Clue?
@@ -23,9 +30,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.separatorStyle = .none
+        
+        tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
         
         self.scoreLabel.text = "\(self.points)"
 
@@ -36,7 +42,7 @@ class ViewController: UIViewController {
         }
 
         SoundManager.shared.playSound()
-        
+
     }
 
     @IBAction func didPressVolumeButton(_ sender: Any) {

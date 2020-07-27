@@ -15,35 +15,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="uFJ-cq-Nqb">
-                                <rect key="frame" x="30" y="284" width="354" height="400"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="400" id="VWg-EZ-6se"/>
-                                </constraints>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uFJ-cq-Nqb">
+                                <rect key="frame" x="30" y="284" width="354" height="499.5"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="G4L-tG-UT0">
-                                        <rect key="frame" x="20" y="55.5" width="314" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="G4L-tG-UT0" id="Z1i-Lv-pKp">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Qop-Cf-fgq">
-                                        <rect key="frame" x="20" y="99" width="314" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Qop-Cf-fgq" id="VSf-TB-f1i">
-                                            <rect key="frame" x="0.0" y="0.0" width="314" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
-                                <rect key="frame" x="25" y="815" width="19" height="22"/>
+                                <rect key="frame" x="25" y="815" width="18.5" height="22"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <state key="normal" image="speaker" catalog="system"/>
+                                <state key="normal" image="speaker.fill" catalog="system"/>
                                 <connections>
                                     <action selector="didPressVolumeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVX-pa-Evl"/>
                                 </connections>
@@ -61,7 +40,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="au0-8X-o1t">
-                                <rect key="frame" x="169" y="808" width="76" height="39"/>
+                                <rect key="frame" x="169.5" y="808.5" width="75.5" height="38.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -73,12 +52,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemPurpleColor" red="0.68627450980000004" green="0.32156862749999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" systemColor="systemIndigoColor" red="0.34509803919999998" green="0.33725490200000002" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uFJ-cq-Nqb" firstAttribute="top" secondItem="IW7-gs-GWY" secondAttribute="bottom" constant="25" id="CAK-Yd-OyR"/>
                             <constraint firstItem="pK8-df-Hfb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="CUJ-Ns-6sS"/>
                             <constraint firstItem="IW7-gs-GWY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="CVj-xi-XsO"/>
                             <constraint firstItem="uFJ-cq-Nqb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CvX-Nv-MGV"/>
+                            <constraint firstItem="au0-8X-o1t" firstAttribute="top" secondItem="uFJ-cq-Nqb" secondAttribute="bottom" constant="25" id="DnS-ra-DfG"/>
                             <constraint firstItem="RMY-cr-kf3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="Dul-u8-usS"/>
                             <constraint firstItem="IW7-gs-GWY" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F9l-7f-Nwt"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pK8-df-Hfb" secondAttribute="trailing" id="GNU-k5-D7d"/>
@@ -109,6 +89,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="speaker" catalog="system" width="128" height="121"/>
+        <image name="speaker.fill" catalog="system" width="128" height="121"/>
     </resources>
 </document>
