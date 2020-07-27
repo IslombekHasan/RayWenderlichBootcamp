@@ -16,6 +16,7 @@
 		34A4ABA824CE5F7B0038A141 /* ClueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34A4ABA624CE5F7B0038A141 /* ClueCell.xib */; };
 		34A4ABAA24CE61530038A141 /* JeopardyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABA924CE61530038A141 /* JeopardyGame.swift */; };
 		34A4ABAE24CE98980038A141 /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 34A4ABAD24CE98980038A141 /* DummyData.json */; };
+		34A4ABB024CEB0AE0038A141 /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABAF24CEB0AE0038A141 /* ReactionView.swift */; };
 		34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */; };
 		34DBCA4024CDFEB200ACA71B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */; };
 		34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA4124CDFEB200ACA71B /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		34A4ABA624CE5F7B0038A141 /* ClueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClueCell.xib; sourceTree = "<group>"; };
 		34A4ABA924CE61530038A141 /* JeopardyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JeopardyGame.swift; sourceTree = "<group>"; };
 		34A4ABAD24CE98980038A141 /* DummyData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = DummyData.json; path = jQuiz/Models/DummyData.json; sourceTree = SOURCE_ROOT; };
+		34A4ABAF24CEB0AE0038A141 /* ReactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		34DBCA3A24CDFEB100ACA71B /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				34DBCA4824CDFEB700ACA71B /* LaunchScreen.storyboard */,
 				34A4ABA524CE5F7B0038A141 /* ClueCell.swift */,
 				34A4ABA624CE5F7B0038A141 /* ClueCell.xib */,
+				34A4ABAF24CEB0AE0038A141 /* ReactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */,
 				34A4AB9924CE56EE0038A141 /* Models.swift in Sources */,
 				34DBCA4024CDFEB200ACA71B /* SceneDelegate.swift in Sources */,
+				34A4ABB024CEB0AE0038A141 /* ReactionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

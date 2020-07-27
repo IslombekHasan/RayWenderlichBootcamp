@@ -23,6 +23,7 @@ class ClueCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         statusImageView.isHidden = true
+        translatesAutoresizingMaskIntoConstraints = false
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,5 +34,5 @@ class ClueCell: UITableViewCell {
         statusImageView.image = UIImage(systemName: status.rawValue)
         statusImageView.tintColor = status == .correct ? UIColor.systemGreen : UIColor.systemRed
     }
-
+    
 }

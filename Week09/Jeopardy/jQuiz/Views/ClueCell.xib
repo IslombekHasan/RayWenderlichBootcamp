@@ -9,15 +9,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ClueCell" customModule="jQuiz" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="69" id="KGk-i7-Jjw" customClass="ClueCell" customModule="jQuiz" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="69"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-ZY-Hdw">
-                        <rect key="frame" x="8" y="6" width="304" height="32"/>
+                        <rect key="frame" x="8" y="18.5" width="304" height="32"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d6G-3p-pem">
                                 <rect key="frame" x="0.0" y="0.0" width="264" height="32"/>
@@ -37,17 +37,23 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Lc6-ZY-Hdw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="h3K-wb-RTV"/>
+                    <constraint firstItem="Lc6-ZY-Hdw" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="Orc-f8-pRV"/>
+                    <constraint firstItem="Lc6-ZY-Hdw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="mYe-sa-20E"/>
                     <constraint firstAttribute="trailing" secondItem="Lc6-ZY-Hdw" secondAttribute="trailing" constant="8" id="ocb-Uj-gl5"/>
                     <constraint firstItem="Lc6-ZY-Hdw" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="shK-LJ-Ww3"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="mYe-sa-20E"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="clueLabel" destination="d6G-3p-pem" id="hGv-dq-rew"/>
                 <outlet property="statusImageView" destination="uV8-cr-NeE" id="Un8-rZ-iD4"/>
             </connections>
-            <point key="canvasLocation" x="133" y="154"/>
+            <point key="canvasLocation" x="131.8840579710145" y="161.71875"/>
         </tableViewCell>
     </objects>
     <resources>
