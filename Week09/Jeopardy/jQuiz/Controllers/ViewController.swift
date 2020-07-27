@@ -15,7 +15,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var clueLabel: UILabel!
     @IBOutlet weak var scoreLabel: UILabel!
-    
+
     @IBOutlet weak var tableView: UITableView! {
         didSet {
             tableView.delegate = self
@@ -24,16 +24,14 @@ class ViewController: UIViewController {
         }
     }
 
-    var clues: [Clue] = []
-    var correctAnswerClue: Clue?
-    var points: Int = 0
+    var game = JeopardyGame()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
-        
-        self.scoreLabel.text = "\(self.points)"
+
+        self.scoreLabel.text = "\(game.getPoints())"
 
         if SoundManager.shared.isSoundEnabled == false {
             soundButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal)
@@ -42,7 +40,7 @@ class ViewController: UIViewController {
         }
 
         SoundManager.shared.playSound()
-
+        updateViews()
     }
 
     @IBAction func didPressVolumeButton(_ sender: Any) {
@@ -54,11 +52,17 @@ class ViewController: UIViewController {
         }
     }
 
+    func updateViews() {
+        categoryLabel.text = game.currentAnswer?.category.title
+        clueLabel.text = game.currentAnswer?.question
+        scoreLabel.text = "\(game.getPoints())"
+    }
+    
 }
 
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clues.count
+        return game.clues.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -66,12 +70,26 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: ClueCell.reuseIdentifier, for: indexPath) as? ClueCell else {
+            fatalError()
+        }
+
+        let clue = game.clues[indexPath.row]
+
+        cell.clueLabel.text = clue.answer
+
+        if game.showsAnswers() {
+            cell.setImage(to: clue == game.currentAnswer ? .correct : .incorrect)
+            cell.statusImageView.isHidden = false
+        }
         return cell
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        game.didSelect(clueAt: indexPath.row)
+        updateViews()
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
     }
 }
 

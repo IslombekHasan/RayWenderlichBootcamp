@@ -9,10 +9,10 @@
 import Foundation
 
 // MARK: - Clue
-struct Clue: Codable {
+struct Clue: Codable, Equatable {
     let id: Int
     let answer, question: String
-    let value: Int
+    let value: Int?
     let airdate, createdAt, updatedAt: String
     let categoryID: Int
     let category: Category
@@ -23,6 +23,10 @@ struct Clue: Codable {
         case updatedAt = "updated_at"
         case categoryID = "category_id"
         case category
+    }
+    
+    static func == (lhs: Clue, rhs: Clue) -> Bool {
+        lhs.id == rhs.id
     }
 }
 

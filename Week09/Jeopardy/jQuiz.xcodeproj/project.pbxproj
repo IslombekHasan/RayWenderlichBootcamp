@@ -14,6 +14,8 @@
 		34A4ABA424CE57D20038A141 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABA324CE57D20038A141 /* SoundManager.swift */; };
 		34A4ABA724CE5F7B0038A141 /* ClueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABA524CE5F7B0038A141 /* ClueCell.swift */; };
 		34A4ABA824CE5F7B0038A141 /* ClueCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34A4ABA624CE5F7B0038A141 /* ClueCell.xib */; };
+		34A4ABAA24CE61530038A141 /* JeopardyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABA924CE61530038A141 /* JeopardyGame.swift */; };
+		34A4ABAE24CE98980038A141 /* DummyData.json in Resources */ = {isa = PBXBuildFile; fileRef = 34A4ABAD24CE98980038A141 /* DummyData.json */; };
 		34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */; };
 		34DBCA4024CDFEB200ACA71B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */; };
 		34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA4124CDFEB200ACA71B /* ViewController.swift */; };
@@ -30,6 +32,8 @@
 		34A4ABA324CE57D20038A141 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		34A4ABA524CE5F7B0038A141 /* ClueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClueCell.swift; sourceTree = "<group>"; };
 		34A4ABA624CE5F7B0038A141 /* ClueCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ClueCell.xib; sourceTree = "<group>"; };
+		34A4ABA924CE61530038A141 /* JeopardyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JeopardyGame.swift; sourceTree = "<group>"; };
+		34A4ABAD24CE98980038A141 /* DummyData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = DummyData.json; path = jQuiz/Models/DummyData.json; sourceTree = SOURCE_ROOT; };
 		34DBCA3A24CDFEB100ACA71B /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,10 +58,12 @@
 		34A4AB9C24CE56F80038A141 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				34A4ABAD24CE98980038A141 /* DummyData.json */,
 				34A4AB9624CE56EE0038A141 /* Models.swift */,
 				34A4AB9724CE56EE0038A141 /* ImageCache.swift */,
 				34A4AB9824CE56EE0038A141 /* NetworkingHandler.swift */,
 				34A4ABA324CE57D20038A141 /* SoundManager.swift */,
+				34A4ABA924CE61530038A141 /* JeopardyGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -186,6 +192,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A4ABAE24CE98980038A141 /* DummyData.json in Resources */,
 				34DBCA4A24CDFEB700ACA71B /* LaunchScreen.storyboard in Resources */,
 				34A4ABA824CE5F7B0038A141 /* ClueCell.xib in Resources */,
 				34DBCA4724CDFEB700ACA71B /* Assets.xcassets in Resources */,
@@ -204,6 +211,7 @@
 				34A4AB9A24CE56EE0038A141 /* ImageCache.swift in Sources */,
 				34A4ABA424CE57D20038A141 /* SoundManager.swift in Sources */,
 				34A4ABA724CE5F7B0038A141 /* ClueCell.swift in Sources */,
+				34A4ABAA24CE61530038A141 /* JeopardyGame.swift in Sources */,
 				34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */,
 				34A4AB9B24CE56EE0038A141 /* NetworkingHandler.swift in Sources */,
 				34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */,
