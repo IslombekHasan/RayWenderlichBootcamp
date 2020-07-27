@@ -51,8 +51,8 @@ class JeopardyGame {
             self.currentAnswer = clue
             self.fetchAllClues(in: clue.categoryID) { (newClues) in
                 self.clues = newClues
-                self.delegate?.didReceiveNewQuestion()
                 self.showAnswersBool = false // this won't let the row to be selected until it's set to false
+                self.delegate?.didReceiveNewQuestion()
             }
         }
     }
@@ -90,6 +90,8 @@ class JeopardyGame {
                 }
             } catch {
                 print(error)
+                // if cannot decode, that means that one or some of the fields are nil, so we're gonna fetch again.
+                self.fetchRandomCategory(completion)
             }
         }
     }
