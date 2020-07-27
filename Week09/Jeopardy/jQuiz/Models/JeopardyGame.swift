@@ -11,6 +11,7 @@ import GameplayKit.GKRandomSource
 
 protocol JeopardyGameDelegate: class {
     func didSelect(correctClue correct: Bool)
+    func didReceiveNewQuestion()
 }
 
 class JeopardyGame {
@@ -18,6 +19,8 @@ class JeopardyGame {
     public private(set) var currentAnswer: Clue?
     private var points = 0
     private var showAnswersBool = false
+
+    weak var delegate: JeopardyGameDelegate?
 
     var clues: [Clue] {
         didSet {
@@ -31,6 +34,29 @@ class JeopardyGame {
         startGame()
     }
 
+    public func startGame() {
+        reset()
+        //        loadDummyData()
+        nextQuestion()
+    }
+
+    public func reset() {
+        clues = []
+        points = 0
+        currentAnswer = nil
+    }
+
+    public func nextQuestion() {
+        fetchRandomCategory { (clue) in
+            self.currentAnswer = clue
+            self.fetchAllClues(in: clue.categoryID) { (newClues) in
+                self.clues = newClues
+                self.delegate?.didReceiveNewQuestion()
+                self.showAnswersBool = false // this won't let the row to be selected until it's set to false
+            }
+        }
+    }
+
     public func getPoints() -> Int {
         points
     }
@@ -39,31 +65,51 @@ class JeopardyGame {
         showAnswersBool
     }
 
-    public func startGame() {
-        reset()
-        loadDummyData()
+    public func didSelect(clueAt index: Int) {
+        let clue = clues[index]
+        didSelect(clue)
     }
 
     public func didSelect(_ clue: Clue) {
         let correct = clue == currentAnswer
         if correct { points += clue.value ?? 100 }
         showAnswersBool = true
+        delegate?.didSelect(correctClue: correct)
     }
 
-    public func didSelect(clueAt index: Int) {
-        let clue = clues[index]
-        didSelect(clue)
+    func fetchRandomCategory(_ completion: @escaping (_ clue: Clue) -> ()) {
+        Networking.shared.getRandomCategory { data in
+            do {
+                let clue = try JSONDecoder().decode([Clue].self, from: data)[0]
+
+                if (clue.question.isEmpty) {
+                    print("Empty question... Retrying...")
+                    self.fetchRandomCategory(completion)
+                } else {
+                    completion(clue)
+                }
+            } catch {
+                print(error)
+            }
+        }
     }
 
-    public func nextQuestion() {
-        // TODO: - do this
-        showAnswersBool = false
-    }
+    func fetchAllClues(in category: Int, _ completion: @escaping (_ clues: [Clue]) -> ()) {
+        Networking.shared.getAllClues(in: category) { data in
+            do {
+                var newClues = try JSONDecoder().decode([Clue].self, from: data)
+                if let indexOfAnswer = newClues.firstIndex(of: self.currentAnswer!) {
+                    newClues.remove(at: indexOfAnswer)
+                }
+                let numberOfCluesToLeave = newClues.count >= 3 ? 3 : newClues.count
+                newClues = Array(newClues.shuffled().prefix(numberOfCluesToLeave))
+                newClues.insert(self.currentAnswer!, at: Int.random(in: 0..<3))
 
-    public func reset() {
-        clues = []
-        points = 0
-        currentAnswer = nil
+                completion(newClues)
+            } catch {
+                print(error)
+            }
+        }
     }
 
     func loadDummyData() {

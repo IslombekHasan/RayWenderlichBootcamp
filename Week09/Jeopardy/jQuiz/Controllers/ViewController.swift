@@ -22,20 +22,22 @@ class ViewController: UIViewController {
             tableView.delegate = self
             tableView.dataSource = self
             tableView.separatorStyle = .none
+            tableView.isScrollEnabled = false
         }
     }
 
     var game = JeopardyGame()
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
+        game.delegate = self
+        updateViews()
+    }
 }
 
 // MARK: - Controller methods
 extension ViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
-        updateViews()
-    }
 
     @IBAction func didPressVolumeButton(_ sender: Any) {
         SoundManager.shared.toggleSoundPreference()
@@ -80,6 +82,23 @@ extension ViewController {
         }) { _ in reactionView.removeFromSuperview() }
     }
 }
+// MARK: - Jeopardy Game Delegate
+extension ViewController: JeopardyGameDelegate {
+    func didReceiveNewQuestion() {
+        DispatchQueue.main.async {
+            self.updateViews()
+            self.tableView.reloadData()
+        }
+    }
+
+    func didSelect(correctClue correct: Bool) {
+        if correct { self.showReaction() }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.game.nextQuestion()
+        }
+    }
+
+}
 
 // MARK: - TableView Delegates
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,6 +118,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let clue = game.clues[indexPath.row]
 
         cell.clueLabel.text = clue.answer
+        cell.statusImageView.isHidden = true
 
         if game.showsAnswers() {
             cell.setImage(to: clue == game.currentAnswer ? .correct : .incorrect)
@@ -108,12 +128,20 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        print("selecteddddd......")
+
         game.didSelect(clueAt: indexPath.row)
         updateViews()
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
-        showReaction()
     }
 
+    func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
+        if game.showsAnswers() {
+            return false
+        }
+        return true
+    }
 }
 
