@@ -23,6 +23,7 @@ class ViewController: UIViewController {
             tableView.dataSource = self
             tableView.separatorStyle = .none
             tableView.isScrollEnabled = false
+            tableView.contentInset = UIEdgeInsets(top: 8, left: 0, bottom: 0, right: 0)
         }
     }
 
@@ -107,7 +108,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        44.0
+        50
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,6 +136,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         updateViews()
         tableView.deselectRow(at: indexPath, animated: true)
         tableView.reloadRows(at: tableView.indexPathsForVisibleRows!, with: .automatic)
+        let cell = tableView.cellForRow(at: indexPath) as! ClueCell
+        let color = cell.containerView.backgroundColor
+
+        UIView.animate(withDuration: 0.7, delay: 0.0, options: [.autoreverse, .repeat], animations: {
+            cell.containerView.backgroundColor = .systemGray3
+        }) { _ in
+//            UIView.animate(withDuration: 0.2) {
+            cell.containerView.backgroundColor = color
+//            }
+        }
     }
 
     func tableView(_ tableView: UITableView, shouldHighlightRowAt indexPath: IndexPath) -> Bool {
