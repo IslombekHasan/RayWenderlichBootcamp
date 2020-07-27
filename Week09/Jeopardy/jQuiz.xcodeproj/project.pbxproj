@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		34A4AB9524CE56E00038A141 /* Jeopardy-theme-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34A4AB9424CE56E00038A141 /* Jeopardy-theme-song.mp3 */; };
+		34A4AB9924CE56EE0038A141 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4AB9624CE56EE0038A141 /* Models.swift */; };
+		34A4AB9A24CE56EE0038A141 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4AB9724CE56EE0038A141 /* ImageCache.swift */; };
+		34A4AB9B24CE56EE0038A141 /* NetworkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4AB9824CE56EE0038A141 /* NetworkingHandler.swift */; };
+		34A4ABA424CE57D20038A141 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4ABA324CE57D20038A141 /* SoundManager.swift */; };
 		34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */; };
 		34DBCA4024CDFEB200ACA71B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */; };
 		34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34DBCA4124CDFEB200ACA71B /* ViewController.swift */; };
@@ -16,7 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		34DBCA3A24CDFEB100ACA71B /* Jeopardy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Jeopardy.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		34A4AB9424CE56E00038A141 /* Jeopardy-theme-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jeopardy-theme-song.mp3"; sourceTree = "<group>"; };
+		34A4AB9624CE56EE0038A141 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		34A4AB9724CE56EE0038A141 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		34A4AB9824CE56EE0038A141 /* NetworkingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingHandler.swift; sourceTree = "<group>"; };
+		34A4ABA324CE57D20038A141 /* SoundManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		34DBCA3A24CDFEB100ACA71B /* jQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		34DBCA4124CDFEB200ACA71B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -37,10 +47,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		34A4AB9C24CE56F80038A141 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				34A4AB9624CE56EE0038A141 /* Models.swift */,
+				34A4AB9724CE56EE0038A141 /* ImageCache.swift */,
+				34A4AB9824CE56EE0038A141 /* NetworkingHandler.swift */,
+				34A4ABA324CE57D20038A141 /* SoundManager.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		34A4AB9D24CE57280038A141 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */,
+				34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		34A4AB9E24CE573D0038A141 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				34DBCA4324CDFEB200ACA71B /* Main.storyboard */,
+				34DBCA4824CDFEB700ACA71B /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		34A4AB9F24CE57650038A141 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				34DBCA4624CDFEB700ACA71B /* Assets.xcassets */,
+				34A4AB9424CE56E00038A141 /* Jeopardy-theme-song.mp3 */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		34A4ABA024CE57880038A141 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				34DBCA4124CDFEB200ACA71B /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		34DBCA3124CDFEB100ACA71B = {
 			isa = PBXGroup;
 			children = (
-				34DBCA3C24CDFEB100ACA71B /* Jeopardy */,
+				34DBCA3C24CDFEB100ACA71B /* jQuiz */,
 				34DBCA3B24CDFEB100ACA71B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +104,30 @@
 		34DBCA3B24CDFEB100ACA71B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				34DBCA3A24CDFEB100ACA71B /* Jeopardy.app */,
+				34DBCA3A24CDFEB100ACA71B /* jQuiz.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		34DBCA3C24CDFEB100ACA71B /* Jeopardy */ = {
+		34DBCA3C24CDFEB100ACA71B /* jQuiz */ = {
 			isa = PBXGroup;
 			children = (
-				34DBCA3D24CDFEB200ACA71B /* AppDelegate.swift */,
-				34DBCA3F24CDFEB200ACA71B /* SceneDelegate.swift */,
-				34DBCA4124CDFEB200ACA71B /* ViewController.swift */,
-				34DBCA4324CDFEB200ACA71B /* Main.storyboard */,
-				34DBCA4624CDFEB700ACA71B /* Assets.xcassets */,
-				34DBCA4824CDFEB700ACA71B /* LaunchScreen.storyboard */,
+				34A4AB9D24CE57280038A141 /* AppDelegate */,
+				34A4AB9C24CE56F80038A141 /* Models */,
+				34A4AB9E24CE573D0038A141 /* Views */,
+				34A4ABA024CE57880038A141 /* Controllers */,
+				34A4AB9F24CE57650038A141 /* Assets */,
 				34DBCA4B24CDFEB700ACA71B /* Info.plist */,
 			);
-			path = Jeopardy;
+			path = jQuiz;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		34DBCA3924CDFEB100ACA71B /* Jeopardy */ = {
+		34DBCA3924CDFEB100ACA71B /* jQuiz */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 34DBCA4E24CDFEB700ACA71B /* Build configuration list for PBXNativeTarget "Jeopardy" */;
+			buildConfigurationList = 34DBCA4E24CDFEB700ACA71B /* Build configuration list for PBXNativeTarget "jQuiz" */;
 			buildPhases = (
 				34DBCA3624CDFEB100ACA71B /* Sources */,
 				34DBCA3724CDFEB100ACA71B /* Frameworks */,
@@ -82,9 +137,9 @@
 			);
 			dependencies = (
 			);
-			name = Jeopardy;
+			name = jQuiz;
 			productName = Jeopardy;
-			productReference = 34DBCA3A24CDFEB100ACA71B /* Jeopardy.app */;
+			productReference = 34DBCA3A24CDFEB100ACA71B /* jQuiz.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +157,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 34DBCA3524CDFEB100ACA71B /* Build configuration list for PBXProject "Jeopardy" */;
+			buildConfigurationList = 34DBCA3524CDFEB100ACA71B /* Build configuration list for PBXProject "jQuiz" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +170,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				34DBCA3924CDFEB100ACA71B /* Jeopardy */,
+				34DBCA3924CDFEB100ACA71B /* jQuiz */,
 			);
 		};
 /* End PBXProject section */
@@ -128,6 +183,7 @@
 				34DBCA4A24CDFEB700ACA71B /* LaunchScreen.storyboard in Resources */,
 				34DBCA4724CDFEB700ACA71B /* Assets.xcassets in Resources */,
 				34DBCA4524CDFEB200ACA71B /* Main.storyboard in Resources */,
+				34A4AB9524CE56E00038A141 /* Jeopardy-theme-song.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +194,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				34A4AB9A24CE56EE0038A141 /* ImageCache.swift in Sources */,
+				34A4ABA424CE57D20038A141 /* SoundManager.swift in Sources */,
 				34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */,
+				34A4AB9B24CE56EE0038A141 /* NetworkingHandler.swift in Sources */,
 				34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */,
+				34A4AB9924CE56EE0038A141 /* Models.swift in Sources */,
 				34DBCA4024CDFEB200ACA71B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +346,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3VPYQS5R8;
-				INFOPLIST_FILE = Jeopardy/Info.plist;
+				INFOPLIST_FILE = jQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -304,7 +364,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = F3VPYQS5R8;
-				INFOPLIST_FILE = Jeopardy/Info.plist;
+				INFOPLIST_FILE = jQuiz/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -319,7 +379,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		34DBCA3524CDFEB100ACA71B /* Build configuration list for PBXProject "Jeopardy" */ = {
+		34DBCA3524CDFEB100ACA71B /* Build configuration list for PBXProject "jQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DBCA4C24CDFEB700ACA71B /* Debug */,
@@ -328,7 +388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		34DBCA4E24CDFEB700ACA71B /* Build configuration list for PBXNativeTarget "Jeopardy" */ = {
+		34DBCA4E24CDFEB700ACA71B /* Build configuration list for PBXNativeTarget "jQuiz" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				34DBCA4F24CDFEB700ACA71B /* Debug */,
