@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3406FA0224CFBFBF00EA4ABE /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3406FA0124CFBFBF00EA4ABE /* ImageView.swift */; };
 		34A4AB9524CE56E00038A141 /* Jeopardy-theme-song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34A4AB9424CE56E00038A141 /* Jeopardy-theme-song.mp3 */; };
 		34A4AB9924CE56EE0038A141 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4AB9624CE56EE0038A141 /* Models.swift */; };
 		34A4AB9A24CE56EE0038A141 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34A4AB9724CE56EE0038A141 /* ImageCache.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3406FA0124CFBFBF00EA4ABE /* ImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		34A4AB9424CE56E00038A141 /* Jeopardy-theme-song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Jeopardy-theme-song.mp3"; sourceTree = "<group>"; };
 		34A4AB9624CE56EE0038A141 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		34A4AB9724CE56EE0038A141 /* ImageCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3406FA0024CFBFAB00EA4ABE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3406FA0124CFBFBF00EA4ABE /* ImageView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		34A4AB9C24CE56F80038A141 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -127,6 +137,7 @@
 		34DBCA3C24CDFEB100ACA71B /* jQuiz */ = {
 			isa = PBXGroup;
 			children = (
+				3406FA0024CFBFAB00EA4ABE /* Extensions */,
 				34A4AB9D24CE57280038A141 /* AppDelegate */,
 				34A4AB9C24CE56F80038A141 /* Models */,
 				34A4AB9E24CE573D0038A141 /* Views */,
@@ -215,6 +226,7 @@
 				34A4ABA424CE57D20038A141 /* SoundManager.swift in Sources */,
 				34A4ABA724CE5F7B0038A141 /* ClueCell.swift in Sources */,
 				34A4ABAA24CE61530038A141 /* JeopardyGame.swift in Sources */,
+				3406FA0224CFBFBF00EA4ABE /* ImageView.swift in Sources */,
 				34DBCA4224CDFEB200ACA71B /* ViewController.swift in Sources */,
 				34A4AB9B24CE56EE0038A141 /* NetworkingHandler.swift in Sources */,
 				34DBCA3E24CDFEB200ACA71B /* AppDelegate.swift in Sources */,

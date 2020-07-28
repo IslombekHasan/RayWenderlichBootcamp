@@ -20,24 +20,12 @@ class Networking: NSObject {
 
     private lazy var session: URLSession = URLSession.shared
     private var dataTask: URLSessionDataTask?
-
-    private static var store: [String: Data] = [:]
+    
     static let shared = Networking()
 
     enum Error: Swift.Error {
         case invalidURL
         case invalidData
-    }
-
-    func getFromStore(with key: String) -> Data? {
-        if let data = Networking.store[key] {
-            return data
-        }
-        return nil
-    }
-
-    func saveInStore(_ data: Data, with key: String) {
-        Networking.store[key] = data
     }
 
     func getRandomCategory(completion: @escaping DataCompletionBlock) {
@@ -57,18 +45,15 @@ class Networking: NSObject {
             dataTask.cancel()
         }
 
-        if let data = getFromStore(with: urlString) {
-            completion(data)
-            return
-        }
-
         guard let url = URL(string: urlString) else {
             print("Invalid URL:  \(logoURL)")
             return
         }
+        request(url, completion: completion)
+    }
 
+    func request(_ url: URL, completion: @escaping DataCompletionBlock) {
         print(url)
-
         dataTask = session.dataTask(with: url, completionHandler: { (data, response, error) in
 
             guard let data = data, error == nil else {
@@ -76,33 +61,28 @@ class Networking: NSObject {
                 return
             }
 
-            self.saveInStore(data, with: urlString)
             completion(data)
         })
         dataTask!.resume()
     }
 
     func requestDownload(_ urlString: String, completion: @escaping DataCompletionBlock) {
-
-        if let data = getFromStore(with: urlString) {
-            completion(data)
-            return
-        }
-
         guard let url = URL(string: urlString) else {
             print("Invalid URL:  \(logoURL)")
             return
         }
 
+        requestDownload(url, completion: completion)
+    }
+
+    func requestDownload(_ url: URL, completion: @escaping DataCompletionBlock) {
         session.downloadTask(with: url) { location, response, error in
             guard let location = location,
                 let data = try? Data(contentsOf: location) else {
                     print("Something's wrong with the url/data. Error: \(String(describing: error?.localizedDescription))")
                     return
             }
-            self.saveInStore(data, with: urlString)
             completion(data)
         }.resume()
-
     }
 }

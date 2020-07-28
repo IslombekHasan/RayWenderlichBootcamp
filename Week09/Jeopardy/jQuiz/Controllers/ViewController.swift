@@ -87,13 +87,7 @@ extension ViewController {
     }
 
     func retrieveLogo() {
-        Networking.shared.getLogo { (imageData) in
-            if let image = UIImage(data: imageData) {
-                DispatchQueue.main.async {
-                    self.logoImageView.image = image
-                }
-            }
-        }
+        logoImageView.getImage(for: URL(string: Networking.shared.logoURL))
     }
 }
 // MARK: - Jeopardy Game Delegate
