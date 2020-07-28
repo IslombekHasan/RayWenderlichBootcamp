@@ -89,7 +89,7 @@ class JeopardyGame {
                     completion(clue)
                 }
             } catch {
-                print(error)
+                print("Something is wrong with the data... \(error) /n Retrying...")
                 // if cannot decode, that means that one or some of the fields are nil, so we're gonna fetch again.
                 self.fetchRandomCategory(completion)
             }

@@ -34,6 +34,7 @@ class ViewController: UIViewController {
         tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
         game.delegate = self
         updateViews()
+        retrieveLogo()
     }
 }
 
@@ -81,6 +82,16 @@ extension ViewController {
             bottomConstraint.constant = reactionView.frame.height
             self.view.layoutIfNeeded()
         }) { _ in reactionView.removeFromSuperview() }
+    }
+
+    func retrieveLogo() {
+        Networking.shared.getLogo { (imageData) in
+            if let image = UIImage(data: imageData) {
+                DispatchQueue.main.async {
+                    self.logoImageView.image = image
+                }
+            }
+        }
     }
 }
 // MARK: - Jeopardy Game Delegate
@@ -155,4 +166,3 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return true
     }
 }
-
