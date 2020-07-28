@@ -21,9 +21,13 @@
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HVo-4j-EUU">
-                                <rect key="frame" x="25" y="815" width="18.5" height="22"/>
+                                <rect key="frame" x="25" y="805" width="32" height="32"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
-                                <state key="normal" image="speaker.fill" catalog="system"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="32" id="0e3-fr-fnc"/>
+                                    <constraint firstAttribute="height" constant="32" id="OaX-BJ-GB3"/>
+                                </constraints>
+                                <state key="normal" image="speaker.2.fill" catalog="system"/>
                                 <connections>
                                     <action selector="didPressVolumeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gVX-pa-Evl"/>
                                 </connections>
@@ -90,6 +94,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="speaker.fill" catalog="system" width="128" height="121"/>
+        <image name="speaker.2.fill" catalog="system" width="128" height="97"/>
     </resources>
 </document>

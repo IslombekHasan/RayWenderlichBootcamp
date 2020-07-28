@@ -31,10 +31,12 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        soundButton.layer.cornerRadius = 12
         tableView.register(UINib(nibName: "ClueCell", bundle: nil), forCellReuseIdentifier: ClueCell.reuseIdentifier)
         game.delegate = self
         updateViews()
         retrieveLogo()
+        SoundManager.shared.toggleSound()
     }
 }
 
@@ -43,10 +45,10 @@ extension ViewController {
 
     @IBAction func didPressVolumeButton(_ sender: Any) {
         SoundManager.shared.toggleSoundPreference()
-        if SoundManager.shared.isSoundEnabled == false {
-            soundButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal)
+        if SoundManager.shared.isSoundEnabled {
+            soundButton.setImage(UIImage(systemName: "speaker.2.fill"), for: .normal)
         } else {
-            soundButton.setImage(UIImage(systemName: "speaker"), for: .normal)
+            soundButton.setImage(UIImage(systemName: "speaker.slash"), for: .normal)
         }
     }
 
