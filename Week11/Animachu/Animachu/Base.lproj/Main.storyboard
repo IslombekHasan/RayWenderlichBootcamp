@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Animachu" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VAD-Uu-Gn6" customClass="AnimationView" customModule="Lottie">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y3U-1V-URy">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVA-Rd-XuZ">
+                                        <rect key="frame" x="279.5" y="751" width="45" height="45"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="bVA-Rd-XuZ" secondAttribute="height" id="L12-kv-6Az"/>
+                                            <constraint firstAttribute="width" constant="45" id="lfS-hn-rBL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="speedometer" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmc-qz-lZB">
+                                        <rect key="frame" x="184.5" y="656" width="45" height="45"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="tmc-qz-lZB" secondAttribute="height" id="k9b-Le-72h"/>
+                                            <constraint firstAttribute="width" constant="45" id="men-xj-I58"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="moon.stars" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OD-3l-TEL">
+                                        <rect key="frame" x="89.5" y="751" width="45" height="45"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="45" id="28m-FG-hBT"/>
+                                            <constraint firstAttribute="width" secondItem="5OD-3l-TEL" secondAttribute="height" id="yby-Lg-UrP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="paintbrush" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOJ-Ks-55k">
+                                        <rect key="frame" x="184.5" y="751" width="45" height="45"/>
+                                        <color key="backgroundColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="aOJ-Ks-55k" secondAttribute="height" id="Vzd-U7-cMZ"/>
+                                            <constraint firstAttribute="width" constant="45" id="v77-Bh-yU5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" image="play" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toggleControlsAndAnimate" destination="BYZ-38-t0r" eventType="touchUpInside" id="3cs-mX-hEA"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="bVA-Rd-XuZ" firstAttribute="centerY" secondItem="aOJ-Ks-55k" secondAttribute="centerY" id="Azk-QJ-aBR"/>
+                                    <constraint firstItem="aOJ-Ks-55k" firstAttribute="top" secondItem="tmc-qz-lZB" secondAttribute="bottom" constant="50" id="GpQ-AN-byE"/>
+                                    <constraint firstItem="tmc-qz-lZB" firstAttribute="centerX" secondItem="aOJ-Ks-55k" secondAttribute="centerX" id="QlA-4z-Zyn"/>
+                                    <constraint firstItem="aOJ-Ks-55k" firstAttribute="leading" secondItem="5OD-3l-TEL" secondAttribute="trailing" constant="50" id="aIS-85-uxy"/>
+                                    <constraint firstItem="bVA-Rd-XuZ" firstAttribute="leading" secondItem="aOJ-Ks-55k" secondAttribute="trailing" constant="50" id="iAb-ps-oMf"/>
+                                    <constraint firstItem="5OD-3l-TEL" firstAttribute="centerY" secondItem="aOJ-Ks-55k" secondAttribute="centerY" id="sxb-t5-shl"/>
+                                    <constraint firstAttribute="bottom" secondItem="aOJ-Ks-55k" secondAttribute="bottom" constant="100" id="uFk-8V-ixx"/>
+                                    <constraint firstItem="aOJ-Ks-55k" firstAttribute="centerX" secondItem="Y3U-1V-URy" secondAttribute="centerX" id="wRC-pQ-Ufh"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animachu" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVo-xC-JsO">
+                                <rect key="frame" x="126" y="94" width="162.5" height="37.5"/>
+                                <fontDescription key="fontDescription" name="Palatino-Bold" family="Palatino" pointSize="34"/>
+                                <color key="textColor" red="0.19215686274509802" green="0.23921568627450979" blue="0.50196078431372548" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VAD-Uu-Gn6" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="Dtn-Uy-Zcn"/>
+                            <constraint firstItem="iVo-xC-JsO" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="IAs-dg-ySd"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VAD-Uu-Gn6" secondAttribute="trailing" id="LyE-4n-Mdg"/>
+                            <constraint firstItem="iVo-xC-JsO" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="MiC-ag-atP"/>
+                            <constraint firstItem="VAD-Uu-Gn6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="N3I-aF-xEr"/>
+                            <constraint firstAttribute="bottom" secondItem="VAD-Uu-Gn6" secondAttribute="bottom" id="cDe-wE-xce"/>
+                            <constraint firstItem="Y3U-1V-URy" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="hry-zW-IPN"/>
+                            <constraint firstItem="Y3U-1V-URy" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="i4I-Gc-la1"/>
+                            <constraint firstAttribute="bottom" secondItem="Y3U-1V-URy" secondAttribute="bottom" id="p9L-dX-08T"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y3U-1V-URy" secondAttribute="trailing" id="yDP-TM-DJF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="animationView" destination="VAD-Uu-Gn6" id="3ei-UZ-KAc"/>
+                        <outlet property="colorButton" destination="5OD-3l-TEL" id="Glk-l1-XTI"/>
+                        <outlet property="colorButtonTrailingConstraint" destination="aIS-85-uxy" id="xH9-LT-AOI"/>
+                        <outlet property="controlsContainerView" destination="Y3U-1V-URy" id="41j-ZS-eTk"/>
+                        <outlet property="dayNightButton" destination="tmc-qz-lZB" id="zW5-JR-9yh"/>
+                        <outlet property="dayNightButtonBottomConstraint" destination="GpQ-AN-byE" id="evh-bY-GRK"/>
+                        <outlet property="moveButton" destination="bVA-Rd-XuZ" id="vxG-IN-ZDn"/>
+                        <outlet property="moveButtonLeadingConstraint" destination="iAb-ps-oMf" id="8yX-7p-TjL"/>
+                        <outlet property="playButton" destination="aOJ-Ks-55k" id="ULe-3q-wDO"/>
+                        <outlet property="titleLabel" destination="iVo-xC-JsO" id="DfO-gh-VKi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="moon.stars" catalog="system" width="128" height="124"/>
+        <image name="paintbrush" catalog="system" width="128" height="128"/>
+        <image name="play" catalog="system" width="120" height="128"/>
+        <image name="speedometer" catalog="system" width="128" height="121"/>
+    </resources>
+</document>
