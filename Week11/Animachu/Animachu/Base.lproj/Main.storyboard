@@ -31,7 +31,7 @@
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="18"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <state key="normal" image="speedometer" catalog="system">
+                                        <state key="normal" image="crop" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
                                         </state>
                                         <connections>
@@ -131,6 +131,7 @@
                         <outlet property="moveButton" destination="bVA-Rd-XuZ" id="vxG-IN-ZDn"/>
                         <outlet property="moveButtonLeadingConstraint" destination="iAb-ps-oMf" id="8yX-7p-TjL"/>
                         <outlet property="playButton" destination="aOJ-Ks-55k" id="ULe-3q-wDO"/>
+                        <outlet property="titleCenterXContraint" destination="IAs-dg-ySd" id="xK8-AF-De6"/>
                         <outlet property="titleLabel" destination="iVo-xC-JsO" id="DfO-gh-VKi"/>
                     </connections>
                 </viewController>
@@ -140,9 +141,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="crop" catalog="system" width="128" height="122"/>
         <image name="moon.stars" catalog="system" width="128" height="124"/>
         <image name="paintbrush" catalog="system" width="128" height="128"/>
         <image name="play" catalog="system" width="120" height="128"/>
-        <image name="speedometer" catalog="system" width="128" height="121"/>
     </resources>
 </document>

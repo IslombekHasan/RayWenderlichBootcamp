@@ -11,6 +11,12 @@ import Lottie
 
 class ViewController: UIViewController {
 
+    enum AnimationTypes {
+        case dayNight
+        case color
+        case move
+    }
+
     @IBOutlet weak var animationView: AnimationView!
     @IBOutlet weak var controlsContainerView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -19,43 +25,80 @@ class ViewController: UIViewController {
     @IBOutlet weak var moveButton: UIButton!
     @IBOutlet weak var playButton: UIButton!
 
+    @IBOutlet weak var titleCenterXContraint: NSLayoutConstraint!
     @IBOutlet weak var moveButtonLeadingConstraint: NSLayoutConstraint!
     @IBOutlet weak var colorButtonTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var dayNightButtonBottomConstraint: NSLayoutConstraint!
 
+    var animations: [AnimationTypes] = []
+    var pp = UIViewPropertyAnimator(duration: 2.0, curve: .linear)
+
     var controlsOpen: Bool = false
-//    {
-//        didSet {
-//            if areControlsVisible { showControls() }
-//            else { hideControls() }
-//        }
-//    }
+    var toDaylight: Bool = true
 
     override func viewDidLoad() {
         super.viewDidLoad()
         animateControls()
         setupView()
-        setupAnimation()
+        setupLottieAnimation()
         setupButtons()
     }
 
     @IBAction func toggleControlsAndAnimate() {
         controlsOpen.toggle()
         animateControls()
+
+        playButton.setImage(UIImage(systemName: controlsOpen ? "play" : "plus"), for: .normal)
+
+        if !controlsOpen {
+            DispatchQueue.main.async {
+                self.pp.startAnimation()
+            }
+        }
     }
 
     @IBAction func addDayNightAnimation(_ sender: Any) {
-        ReactionView.showReaction(in: view, from: .top, with: "Day/Night animation added")
+        animations.append(.dayNight)
+        toDaylight.toggle()
+        ReactionView.showReaction(in: view, from: .top, with: "\(toDaylight ? "Daylight" : "Nightlife") animation added")
+        dayNightButton.setImage(UIImage(systemName: toDaylight ? "moon.stars" : "sunrise"), for: .normal)
+
+        pp.stopAnimation(true)
+        pp.addAnimations {
+            self.toDaylight ? self.animateToDaylight() : self.animateToNight()
+        }
     }
-    
+
     @IBAction func addColorAnimation(_ sender: Any) {
+        animations.append(.color)
         ReactionView.showReaction(in: view, with: "Color animation added")
+        pp.stopAnimation(true)
+        pp.addAnimations {
+            let color = UIColor(red: CGFloat.random(in: 0...1), green: CGFloat.random(in: 0...1), blue: CGFloat.random(in: 0...1), alpha: 1)
+            self.playButton.backgroundColor = color
+            self.colorButton.backgroundColor = color
+            self.moveButton.backgroundColor = color
+            self.dayNightButton.backgroundColor = color
+        }
     }
-    
+
     @IBAction func addMoveAnimation(_ sender: Any) {
+        animations.append(.move)
         ReactionView.showReaction(in: view, from: .top, with: "Move animation added")
+
+        pp.stopAnimation(true)
+        pp.addAnimations {
+            self.animationView.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 0...800))
+            self.playButton.frame.origin.y = CGFloat.random(in: 0...UIScreen.main.bounds.height - 50)
+            self.playButton.frame.origin.x = CGFloat.random(in: 0...UIScreen.main.bounds.width - 50)
+        }
+        
+//        pp.addAnimations {
+//            let scale = CGFloat.random(in: 1...3)
+//            self.animationView.transform = CGAffineTransform(scaleX: scale, y: scale)
+//        }
     }
-    
+
     func animateControls() {
         dayNightButtonBottomConstraint.constant = controlsOpen ? 50 : -45
         moveButtonLeadingConstraint.constant = controlsOpen ? 50 : -45
@@ -83,8 +126,11 @@ class ViewController: UIViewController {
         self.view.layer.insertSublayer(gradient, at: 0)
     }
 
-    func setupAnimation() {
+    func setupLottieAnimation() {
         titleLabel.alpha = 0
+        titleCenterXContraint.constant = 50
+        view.layoutIfNeeded()
+
         controlsContainerView.alpha = 0
         animationView.animation = Animation.named("sunrise-animation")
         animationView.loopMode = .playOnce
@@ -92,9 +138,12 @@ class ViewController: UIViewController {
 
         animationView.play(fromProgress: 0.0, toProgress: 0.5, loopMode: .playOnce) { (finished) in
 
-            UIView.animate(withDuration: 0.5) {
+            self.titleCenterXContraint.constant = 0
+
+            UIView.animate(withDuration: 0.7, delay: 0, options: .curveEaseOut, animations: {
                 self.titleLabel.alpha = 1
-            }
+                self.view.layoutIfNeeded()
+            })
 
             self.animationView.play(fromProgress: 0.5, toProgress: 1.0, loopMode: .playOnce) { (finished) in
 
@@ -107,7 +156,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    
+
     func setupButtons() {
         playButton.roundAndShadow()
         dayNightButton.roundAndShadow()
@@ -115,5 +164,18 @@ class ViewController: UIViewController {
         colorButton.roundAndShadow()
     }
 
+    func animateToDaylight() {
+        DispatchQueue.main.async {
+            self.animationView.play(fromProgress: 0.0,
+                               toProgress: 1.0)
+        }
+    }
+
+    func animateToNight() {
+        DispatchQueue.main.async {
+            self.animationView.play(fromProgress: 1.0,
+                               toProgress: 0.0)
+        }
+    }
 }
 
