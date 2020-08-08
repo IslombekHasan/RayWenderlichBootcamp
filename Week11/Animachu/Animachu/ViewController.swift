@@ -88,15 +88,14 @@ class ViewController: UIViewController {
 
         pp.stopAnimation(true)
         pp.addAnimations {
-            self.animationView.transform = CGAffineTransform(rotationAngle: CGFloat.random(in: 0...800))
+            let scale = CGFloat.random(in: 1...3)
+            let scaleTransform = CGAffineTransform(scaleX: scale, y: scale)
+            let rotationTransform = CGAffineTransform(rotationAngle: CGFloat.pi)
+            
+            self.animationView.transform = [scaleTransform, rotationTransform].randomElement()!
             self.playButton.frame.origin.y = CGFloat.random(in: 0...UIScreen.main.bounds.height - 50)
             self.playButton.frame.origin.x = CGFloat.random(in: 0...UIScreen.main.bounds.width - 50)
         }
-        
-//        pp.addAnimations {
-//            let scale = CGFloat.random(in: 1...3)
-//            self.animationView.transform = CGAffineTransform(scaleX: scale, y: scale)
-//        }
     }
 
     func animateControls() {
