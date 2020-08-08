@@ -44,6 +44,18 @@ class ViewController: UIViewController {
         animateControls()
     }
 
+    @IBAction func addDayNightAnimation(_ sender: Any) {
+        ReactionView.showReaction(in: view, from: .top, with: "Day/Night animation added")
+    }
+    
+    @IBAction func addColorAnimation(_ sender: Any) {
+        ReactionView.showReaction(in: view, with: "Color animation added")
+    }
+    
+    @IBAction func addMoveAnimation(_ sender: Any) {
+        ReactionView.showReaction(in: view, from: .top, with: "Move animation added")
+    }
+    
     func animateControls() {
         dayNightButtonBottomConstraint.constant = controlsOpen ? 50 : -45
         moveButtonLeadingConstraint.constant = controlsOpen ? 50 : -45
@@ -95,8 +107,6 @@ class ViewController: UIViewController {
             }
         }
     }
-
-    
     
     func setupButtons() {
         playButton.roundAndShadow()

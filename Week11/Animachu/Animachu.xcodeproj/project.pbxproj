@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		341AF1A424DE90890014FBEE /* sunrise-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 341AF1A324DE90890014FBEE /* sunrise-animation.json */; };
 		341AF1A624DE9D8A0014FBEE /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341AF1A524DE9D8A0014FBEE /* Extensions.swift */; };
+		341AF1A824DEBFC80014FBEE /* ReactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341AF1A724DEBFC70014FBEE /* ReactionView.swift */; };
 		34CD0FC824DBF024009CEB70 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD0FC724DBF024009CEB70 /* AppDelegate.swift */; };
 		34CD0FCA24DBF024009CEB70 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD0FC924DBF024009CEB70 /* SceneDelegate.swift */; };
 		34CD0FCC24DBF024009CEB70 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CD0FCB24DBF024009CEB70 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		341AF1A324DE90890014FBEE /* sunrise-animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "sunrise-animation.json"; sourceTree = "<group>"; };
 		341AF1A524DE9D8A0014FBEE /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		341AF1A724DEBFC70014FBEE /* ReactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactionView.swift; sourceTree = "<group>"; };
 		34CD0FC424DBF024009CEB70 /* Animachu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Animachu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		34CD0FC724DBF024009CEB70 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		34CD0FC924DBF024009CEB70 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,7 @@
 				341AF1A524DE9D8A0014FBEE /* Extensions.swift */,
 				34CD0FD024DBF026009CEB70 /* Assets.xcassets */,
 				341AF1A324DE90890014FBEE /* sunrise-animation.json */,
+				341AF1A724DEBFC70014FBEE /* ReactionView.swift */,
 				34CD0FD224DBF026009CEB70 /* LaunchScreen.storyboard */,
 				34CD0FD524DBF026009CEB70 /* Info.plist */,
 			);
@@ -157,6 +160,7 @@
 				34CD0FC824DBF024009CEB70 /* AppDelegate.swift in Sources */,
 				34CD0FCA24DBF024009CEB70 /* SceneDelegate.swift in Sources */,
 				341AF1A624DE9D8A0014FBEE /* Extensions.swift in Sources */,
+				341AF1A824DEBFC80014FBEE /* ReactionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

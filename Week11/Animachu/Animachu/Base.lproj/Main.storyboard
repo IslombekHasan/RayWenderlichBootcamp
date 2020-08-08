@@ -34,6 +34,9 @@
                                         <state key="normal" image="speedometer" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addMoveAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MX2-KH-qhy"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tmc-qz-lZB">
                                         <rect key="frame" x="184.5" y="656" width="45" height="45"/>
@@ -47,6 +50,9 @@
                                         <state key="normal" image="moon.stars" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addDayNightAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R5X-5y-mXY"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5OD-3l-TEL">
                                         <rect key="frame" x="89.5" y="751" width="45" height="45"/>
@@ -60,6 +66,9 @@
                                         <state key="normal" image="paintbrush" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" weight="medium"/>
                                         </state>
+                                        <connections>
+                                            <action selector="addColorAnimation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zM5-Z1-vdA"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aOJ-Ks-55k">
                                         <rect key="frame" x="184.5" y="751" width="45" height="45"/>
