@@ -63,6 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				3406FA0124CFBFBF00EA4ABE /* ImageView.swift */,
+				34A4AB9724CE56EE0038A141 /* ImageCache.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -72,7 +73,6 @@
 			children = (
 				34A4ABAD24CE98980038A141 /* DummyData.json */,
 				34A4AB9624CE56EE0038A141 /* Models.swift */,
-				34A4AB9724CE56EE0038A141 /* ImageCache.swift */,
 				34A4AB9824CE56EE0038A141 /* NetworkingHandler.swift */,
 				34A4ABA324CE57D20038A141 /* SoundManager.swift */,
 				34A4ABA924CE61530038A141 /* JeopardyGame.swift */,

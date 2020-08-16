@@ -101,12 +101,13 @@ class JeopardyGame {
             do {
                 var newClues = try JSONDecoder().decode([Clue].self, from: data)
                 if let indexOfAnswer = newClues.firstIndex(of: self.currentAnswer!) {
+                    print("found the answer at \(indexOfAnswer)")
                     newClues.remove(at: indexOfAnswer)
                 }
-                let numberOfCluesToLeave = newClues.count >= 3 ? 3 : newClues.count
-                newClues = Array(newClues.shuffled().prefix(numberOfCluesToLeave))
-                newClues.insert(self.currentAnswer!, at: Int.random(in: 0..<3))
-
+                let offset = newClues.count > 2 ? 3 : newClues.count
+                newClues = Array(newClues.shuffled().prefix(offset))
+                newClues.insert(self.currentAnswer!, at: Int.random(in: 0..<offset))
+                print(newClues.map { ($0.id, $0.answer) })
                 completion(newClues)
             } catch {
                 print(error)
