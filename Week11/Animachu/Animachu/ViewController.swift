@@ -50,6 +50,7 @@ class ViewController: UIViewController {
 
         playButton.setImage(UIImage(systemName: controlsOpen ? "play" : "plus"), for: .normal)
 
+        pp.stopAnimation(true)
         if !controlsOpen {
             DispatchQueue.main.async {
                 self.pp.startAnimation()
